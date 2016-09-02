@@ -1,0 +1,50 @@
+
+
+.title {
+    margin-top: 120px;
+    padding: 0px;
+    color: #f99f2b;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+    font-size: 46px;
+}
+
+.main {
+    background-color: #f99f2b;
+    border-radius: 10px;
+    margin-top: 0px;
+    padding-bottom: 20px;
+    
+}
+
+.intro-text {
+    margin-top: 50px;
+    margin-left: 30px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 10;
+    color: whitesmoke;
+    
+}
+
+.form-block {
+    font-size: 18px;
+}
+
+.login {
+    margin-top: 50px;
+    margin-left: 30px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 10;
+    color: whitesmoke;
+    
+}
+
+input {
+    margin-bottom: 5px;
+    color: black;
+}
+
