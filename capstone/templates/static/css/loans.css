@@ -1,0 +1,49 @@
+h3 {
+    padding-left: 25px;
+}
+
+.help-block {
+    font-style: italic;
+
+}
+
+#user {
+    float: right;
+    
+}
+
+.nav {
+    background-color: #f99f2b;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    
+}
+
+.first-row {
+
+    
+}
+
+.main-area {
+    background-color: #FFF;
+    padding: 25px;
+
+}
+
+.side-bar {
+    background-color: #FFF;
+    padding-top: 25px;
+}
+
+.section {
+    background-color: #f99f2b;
+    border-top-right-radius: 10px;
+    border-radius: 10px;
+    padding-bottom: 25px;
+}
+
+.borr-info-form {
+    margin: 10px;
+    
+}

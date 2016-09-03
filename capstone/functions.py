@@ -3,7 +3,7 @@ import datetime
 b1_income_info = {
                 'employer_name': 'Intel',
                 'start_date': '04/13/2008',
-                'income_amount': '$40,000',
+                'income_amount': '$40,000.72',
                 'period_end_date': '11/01/2016',
                 'pay_frequency': 'semi-monthly'
                 }
@@ -11,7 +11,7 @@ b1_income_info = {
 b2_income_info = {
                 'employer_name': 'Hewlett Packard',
                 'start_date': '02/23/2011',
-                'income_amount': '$60,000',
+                'income_amount': '$60,000.34',
                 'period_end_date': '11/15/2016',
                 'pay_frequency': 'semi-monthly'
                 }
@@ -23,16 +23,19 @@ def income_calculator(income, pay_frequency):
     """
     income = income.replace('$', '')
     income = income.replace(',', '')
-    income = int(income)
+    income = float(income)
 
     if pay_frequency == "bi-weekly":
-        return (income * 26) / 12
+        income = (income * 26) / 12
+        return "$%.2f" % income
     elif pay_frequency == "semi-monthly":
-        return income * 2
+        income = income * 2
+        return "$%.2f" % income
     elif pay_frequency == "monthly":
-        return income
+        return "$%.2f" % income
     elif pay_frequency == "weekly":
-        return (income * 52) / 12
+        income = (income * 52) / 12
+        return "$%.2f" % income
     return None
 
 
