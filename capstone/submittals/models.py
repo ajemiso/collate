@@ -6,6 +6,12 @@ class Person(models.Model):
     user = models.OneToOneField(User)
     joined_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return "{0.user}".format(self)
+
+    def __repr__(self):
+        return "{__class__.__name__}({0.user})".format(self)
+
 
 class Submittal(models.Model):
     loan_number = models.PositiveIntegerField(unique=True)
