@@ -1,5 +1,24 @@
-h3 {
+body {
+    background-color: #efeff5;
+}
+
+a {
+    color: white;
+
+}
+
+a:visited {
+    color: white;
+
+}
+
+h4 {
     padding-left: 25px;
+}
+
+h5 {
+    margin: 0;
+    font-size: 20px;
 }
 
 .help-block {
@@ -13,7 +32,7 @@ h3 {
 }
 
 .nav {
-    background-color: #f99f2b;
+    background-color: #50507c;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     color: white;
@@ -37,7 +56,7 @@ h3 {
 }
 
 .section {
-    background-color: #f99f2b;
+    background-color: #e0e0eb;
     border-top-right-radius: 10px;
     border-radius: 10px;
     padding-bottom: 25px;
@@ -46,4 +65,8 @@ h3 {
 .borr-info-form {
     margin: 10px;
     
+}
+
+.logout-list {
+    margin-top: 6px;
 }

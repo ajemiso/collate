@@ -20,5 +20,7 @@ from submittals import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
-    #url(r'^submittals/', include('submittals.urls')),
+    url(r'^login_user/$', views.login_user),
+    url(r'^logout_user/$', views.logout_user),
+    url(r'^submittals/', include('submittals.urls')),
 ]

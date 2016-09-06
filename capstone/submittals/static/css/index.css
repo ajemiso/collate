@@ -10,7 +10,8 @@
 }
 
 .main {
-    background-color: #f99f2b;
+    background-color: #50507c;
+    color: #efeff5;
     border-radius: 10px;
     margin-top: 0px;
     padding-bottom: 20px;
@@ -29,6 +30,7 @@
 }
 
 .form-block {
+    display: block;
     font-size: 18px;
 }
 
@@ -48,3 +50,12 @@ input {
     color: black;
 }
 
+.login-message {
+    color: #f99f2b;
+
+}
+
+.current_user {
+    color: green;
+    font-weight: 300;
+}

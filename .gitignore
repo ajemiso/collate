@@ -3,4 +3,4 @@
 migrations
 __pycache*
 *.pyc
-venv/
+cap-venv/
