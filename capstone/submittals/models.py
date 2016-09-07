@@ -13,13 +13,18 @@ class Person(models.Model):
         return "{__class__.__name__}({0.user})".format(self)
 
 class Submittal(models.Model):
-    loan_number = models.PositiveIntegerField(unique=True)
-    account_type = models.CharField(max_length=256)
-    loan_officer = models.CharField(max_length=256)
-    loan_processor = models.ForeignKey(Person, related_name="submittals")
+    ACCOUNT_TYPES = (
+        ('EQ', 'Equity Line of Credit'),
+        ('EL', 'Equity Loan'),
+    )
 
-    b1_first_name = models.CharField(max_length=256)
-    b1_last_name = models.CharField(max_length=256)
+    loan_number = models.PositiveIntegerField(unique=True)
+    account_type = models.CharField(max_length=256, blank=True, choices=ACCOUNT_TYPES)
+    loan_officer = models.CharField(max_length=256, blank=True)
+    loan_processor = models.ForeignKey(Person, related_name="submittals", null=True, blank=True)
+
+    b1_first_name = models.CharField(max_length=256, blank=True)
+    b1_last_name = models.CharField(max_length=256, blank=True)
 
     b2_first_name = models.CharField(max_length=256, blank=True)
     b2_last_name = models.CharField(max_length=256, blank=True)

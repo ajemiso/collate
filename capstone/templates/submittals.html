@@ -8,9 +8,9 @@
 <header class="nav">
     <ul class="nav nav-tabs col-md-3 col-sm-5 col-xs-6">
       <li role="presentation" class="active"><a href="/submittals/">Home</a></li>
-      <li role="presentation"><a href="#">Save</a></li>
-      <li role="presentation"><a href="#">Messages</a></li>
-        <li></li>
+      <li role="presentation"><a href="/save_submit/">Save</a></li>
+      <li role="presentation"><a href="#">Load</a></li>
+      <li role="presentation"><a href="#">New</a></li>
 </ul>
         <ul class="col-md-3 pull-right list-inline logout-list">
             <li><h5>Hi, {{ request.user.username }}!</h5></li>
@@ -33,11 +33,13 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_first_name">First Name*</label>
-                        <input type="text" class="form-control" id="b1_first_name" placeholder="First Name">
+                        <!-- input type="text" class="form-control" id="b1_first_name" placeholder="First Name" -->
+                        {{ form.b1_first_name }}
                       </div>
                       <div class="form-group">
                         <label for="b1_last_name">Last Name*</label>
-                        <input type="text" class="form-control" id="b1_last_name" placeholder="Last Name">
+                          {{ form.b1_last_name }}
+                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
                       </div>
                       <div class="form-group">
                         <p class="help-block">* = required field</p>
@@ -49,14 +51,16 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="loan_officer">Loan Officer*</label>
-                        <input type="text" class="form-control" id="loan_officer" placeholder="First Name Only">
+                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+                          {{ form.loan_officer }}
                       </div>
                       <div class="form-group">
                         <label for="account_type">Account Type*</label>
-                        <select class="form-control" id="account_type">
-                          <option selected="selected">Equity Line of Credit</option>
-                          <option>Equity Loan</option>
-                        </select>
+                          {{ form.account_type }}
+                        <!-- select class="form-control" id="account_type" -->
+                          <!-- option selected="selected">Equity Line of Credit</option -->
+                          <!-- option>Equity Loan</option -->
+                        <!-- /select -->
                       </div>
                     </form>
                 
@@ -71,11 +75,13 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_first_name">First Name</label>
-                        <input type="text" class="form-control" id="b2_first_name" placeholder="First Name">
+                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+                        {{ form.b2_first_name }}
                       </div>
                       <div class="form-group">
                         <label for="b2_last_name">Last Name</label>
-                        <input type="text" class="form-control" id="b2_last_name" placeholder="Last Name">
+                        <!-- input type="text" class="form-control" id="b2_last_name" placeholder="Last Name" -->
+                        {{ form.b2_last_name }}
                       </div>
                       <div class="form-group">
                     </form>
@@ -108,11 +114,13 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_employer_name">Employer Name*</label>
-                        <input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name">
+                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
+                        {{ form.b1_employer_name }}
                       </div>
                       <div class="form-group">
                         <label for="b1_hire_date">Hire Date*</label>
-                        <input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy">
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.b1_hire_date }}
                       </div>
                       <div class="form-group">
                         <p class="help-block">* = required field</p>

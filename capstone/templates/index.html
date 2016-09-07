@@ -2,14 +2,27 @@
 
 {% block body %}
 
+{% if messages %}
+
+<div class="row message-bar">
+    <section class="col-xs-offset-4 col-xs-4">
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        </section>
+</div>
+
 {% if user.is_authenticated %}
 <div class="row">
     <nav class="nav navbar">
-        <div class="col-md-4 pull-right login-message">
+        <div class="col-xs-4 pull-right login-message">
            <ul class="list-inline">
-            <li><h5>you are currenlty signed in as <span class="current_user">
+            <li><h5>you are currently signed in as <span class="current_user">
                 <a href="/submittals/">
-                {{ request.user.username }}
+                {{ user.username }}
                 </a>
             </span></h5></li>
             <li><a href="logout_user">logout</a>
@@ -24,23 +37,34 @@
 
 
 <div class="row">
-            <section class="col-xs-offset-4 col-xs-4 title">
+            <section class="col-xs-offset-4 col-xs-4 title" >
                 Collate.
             </section>
     </div>
 
     <div class="row">
-            <section class="col-xs-offset-4 col-xs-4 main">
+            <section class="col-xs-offset-4 col-xs-4 main" id="main">
              <div class="row">
 
-            <h3>Log In</h3>
+
     <form method="POST" action="/login_user/">{% csrf_token %}
-    <div class="col-xs-offset-1 col-xs-9 form-group form-block">
-        <label for="username">Email:</label>
+    <div class="col-xs-offset-2 col-xs-8 form-group form-block">
+
+
+        <div class="row">
+        <label for="username">Username:</label>
         <input type="text" name="username" id="username" placeholder='Username'>
+
+        </div>
+
+        <div class="row">
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" placeholder='Password'>
+
+        </div>
+
         <button type="submit" id="login" class="btn btn-default pull-right">Log In</button>
+
     </div>
     </form>
     </div>
@@ -49,8 +73,8 @@
                 </div>
 
 
-
     </div>
+
 
 
 {% endblock %}

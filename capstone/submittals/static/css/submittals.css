@@ -7,6 +7,8 @@ a {
 
 }
 
+ul.nav a:hover { color: #000 !important; }
+
 a:visited {
     color: white;
 
@@ -69,4 +71,8 @@ h5 {
 
 .logout-list {
     margin-top: 6px;
+}
+
+.logout-list li a {
+    color: #f99f2b;
 }
