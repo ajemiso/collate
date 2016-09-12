@@ -5,9 +5,3 @@
 $('.title').hide().fadeIn();
 
 $('#main').hide().fadeIn(1500);
-
-
-
-
-
-    });

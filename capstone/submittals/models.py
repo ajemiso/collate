@@ -18,6 +18,13 @@ class Submittal(models.Model):
         ('EL', 'Equity Loan'),
     )
 
+    PAY_TYPES = (
+        ('BW', 'Bi-Weekly'),
+        ('SM', 'Semi-Monthly'),
+        ('MO', 'Monthly'),
+        ('WK', 'Weekly'),
+    )
+
     loan_number = models.PositiveIntegerField(unique=True)
     account_type = models.CharField(max_length=256, blank=True, choices=ACCOUNT_TYPES)
     loan_officer = models.CharField(max_length=256, blank=True)
@@ -38,8 +45,8 @@ class Submittal(models.Model):
     b1_income_amount = models.PositiveIntegerField(null=True, blank=True)
     b2_income_amount = models.PositiveIntegerField(null=True, blank=True)
 
-    b1_pay_frequency = models.CharField(max_length=256, blank=True)
-    b2_pay_frequency = models.CharField(max_length=256, blank=True)
+    b1_pay_frequency = models.CharField(max_length=256, blank=True, choices=PAY_TYPES)
+    b2_pay_frequency = models.CharField(max_length=256, blank=True, choices=PAY_TYPES)
 
     b1_period_end_date = models.CharField(max_length=256, blank=True)
     b2_period_end_date = models.CharField(max_length=256, blank=True)
@@ -49,3 +56,5 @@ class Submittal(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return "/submittal/{}/{}/".format(self.loan_processor.user, self.id)

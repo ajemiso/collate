@@ -6,7 +6,8 @@ $('.b2').hide();
 
 
 $('#show-b2').click(function(evt) {
-    $('.b2').toggle();
+    $('.b2').slideToggle();
 
 });
+
 

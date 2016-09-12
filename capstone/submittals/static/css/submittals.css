@@ -76,3 +76,9 @@ h5 {
 .logout-list li a {
     color: #f99f2b;
 }
+
+#show-b2 {
+    margin-left: 22px;
+    font-size: 10px;
+    font-style: italic;
+}

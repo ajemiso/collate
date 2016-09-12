@@ -11,9 +11,11 @@
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
-{% endif %}
+
         </section>
 </div>
+
+{% endif %}
 
 {% if user.is_authenticated %}
 <div class="row">
@@ -21,7 +23,7 @@
         <div class="col-xs-4 pull-right login-message">
            <ul class="list-inline">
             <li><h5>you are currently signed in as <span class="current_user">
-                <a href="/submittals/">
+                <a href="{{ user.username }}/submittals/">
                 {{ user.username }}
                 </a>
             </span></h5></li>

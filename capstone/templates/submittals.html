@@ -2,15 +2,34 @@
 
 {% block body %}
 
+<!-- error messages -->
+{% if messages %}
+
+<div class="row message-bar">
+    <section class="col-xs-offset-4 col-xs-4">
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+
+        </section>
+</div>
+
+{% endif %}
+<!-- end error messages -->
+
+
+
 <div class="container">
     
     <div class="row">
 <header class="nav">
     <ul class="nav nav-tabs col-md-3 col-sm-5 col-xs-6">
-      <li role="presentation" class="active"><a href="/submittals/">Home</a></li>
-      <li role="presentation"><a href="/save_submit/">Save</a></li>
-      <li role="presentation"><a href="#">Load</a></li>
-      <li role="presentation"><a href="#">New</a></li>
+      <li role="presentation" class="active"><a href="{{ user.username }}/submittals/">Home</a></li>
+      <li role="presentation"><a onClick="saveSubmit(); return false;" id="save" href="">Save</a></li>
+      <li role="presentation"><a href="">Load</a></li>
+      <li role="presentation"><a href="">New</a></li>
 </ul>
         <ul class="col-md-3 pull-right list-inline logout-list">
             <li><h5>Hi, {{ request.user.username }}!</h5></li>
@@ -27,10 +46,14 @@
       <div class="col-md-9 main-area">
         <section class="section col-md-12">
             <div class="row">
+                <aside class="list-inline">
                 <h4>B1 Primary Information</h4>
-                <input type="checkbox" name="show-b2" id="show-b2"> Add a 2nd borrower
+                <input type="checkbox" name="show-b2" id="show-b2"> Add 2nd borrower
+                </aside>
+
+
                 <article class="col-md-4">
-                    <form class="borr-info-form">
+                    <form class="borr-info-form">{% csrf_token %}
                       <div class="form-group">
                         <label for="b1_first_name">First Name*</label>
                         <!-- input type="text" class="form-control" id="b1_first_name" placeholder="First Name" -->
@@ -66,11 +89,25 @@
                 
                 
                 </article>
-            
-            </div>
-                
+
+                <article class="col-md-4">
+                    <form class="borr-info-form">
+                      <div class="form-group">
+                        <label for="loan_officer">Loan Number*</label>
+                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+                          {{ form.loan_number }}
+                      </div>
+                    </form>
+
+
+                </article>
+
+             </div>
+
+
             <div class="row b2">
                 <h4>B2 Primary Information</h4>
+
                 <article class="col-md-4">
                     <form class="borr-info-form">
                       <div class="form-group">
@@ -133,16 +170,18 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_income_amount">Income Amount*</label>
-                        <input type="text" class="form-control" id="b1_income_amount" placeholder="$">
+                        <!-- input type="text" class="form-control" id="b1_income_amount" placeholder="$" -->
+                        {{ form.b1_income_amount }}
                       </div>
                       <div class="form-group">
                         <label for="b1_pay_frequency">Pay Frequency*</label>
-                        <select class="form-control" id="b1_pay_frequency">
+                          {{ form.b1_pay_frequency }}
+                        <!-- select class="form-control" id="b1_pay_frequency">
                           <option selected="selected"></option>
                           <option>Bi-Weekly</option>
                           <option>Semi-Monthly</option>
                           <option>Monthly</option>
-                          <option>Weekly</option>
+                          <option>Weekly</option -->
                         </select>
                       </div>
                     </form>
@@ -154,8 +193,9 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_income_output">Output</label>
-                        <textarea class="form-control" id="b1_income_output" rows="5"
-                                  placeholder="All B1 income fields must be completed" readonly></textarea>
+                          {{ form.b1_income_output }}
+                        <!-- textarea class="form-control" id="b1_income_output" rows="5"
+                                  placeholder="All B1 income fields must be completed" readonly></textarea -->
                       </div>
                     </form>
 
@@ -170,11 +210,13 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_employer_name">Employer Name*</label>
-                        <input type="text" class="form-control" id="b2_employer_name" placeholder="Employer Name">
+                          {{ form.b2_employer_name }}
+                        <!-- input type="text" class="form-control" id="b2_employer_name" placeholder="Employer Name" -->
                       </div>
                       <div class="form-group">
                         <label for="b2_hire_date">Hire Date*</label>
-                        <input type="text" class="form-control" id="b2_hire_date" placeholder="mm/dd/yy">
+                          {{ form.b2_hire_date }}
+                        <!-- input type="text" class="form-control" id="b2_hire_date" placeholder="mm/dd/yy" -->
                       </div>
                       <div class="form-group">
                         <p class="help-block">* = required field</p>
@@ -185,17 +227,19 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_income_amount">Income Amount*</label>
-                        <input type="text" class="form-control" id="b2_income_amount" placeholder="$">
+                        <!-- input type="text" class="form-control" id="b2_income_amount" placeholder="$" -->
+                        {{ form.b2_income_amount }}
                       </div>
                       <div class="form-group">
                         <label for="b2_pay_frequency">Pay Frequency*</label>
-                        <select class="form-control" id="b2_pay_frequency">
+                          {{ form.b2_pay_frequency }}
+                        <!-- select class="form-control" id="b2_pay_frequency">
                           <option selected="selected"></option>
                           <option>Bi-Weekly</option>
                           <option>Semi-Monthly</option>
                           <option>Monthly</option>
                           <option>Weekly</option>
-                        </select>
+                        </select -->
                       </div>
                     </form>
 
@@ -206,8 +250,9 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_income_output">Output</label>
-                        <textarea class="form-control" id="b2_income_output" rows="5"
-                                  placeholder="All B2 income fields must be completed" readonly></textarea>
+                          {{ form.b2_income_output }}
+                        <!-- textarea class="form-control" id="b2_income_output" rows="5"
+                                  placeholder="All B2 income fields must be completed" readonly></textarea -->
                       </div>
                     </form>
 
