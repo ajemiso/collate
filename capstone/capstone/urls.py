@@ -18,12 +18,18 @@ from django.contrib import admin
 from submittals import views
 
 urlpatterns = [
+    # Django Admin Site
     url(r'^admin/', admin.site.urls),
+
+    # Web Application
     url(r'^$', views.index),
+
+    # Accounts
     url(r'^login_user/$', views.login_user),
     url(r'^logout_user/$', views.logout_user),
-    #url(r'^submittals/$', include('submittals.urls')),
+
+    # Submittals
     url(r'^save/', views.save_submit),
-    url(r'^(?P<username>\w+)/submittals/$', views.submittals, name='submittals'),
+    url(r'^(?P<username>\w+)/submittals/$', views.dashboard, name='submittals'),
     url(r'^(?P<username>\w+)/submittals/(?P<pk>\d+)/$', views.load_submit, name='load_submit'),
 ]

@@ -1,0 +1,26 @@
+.table {
+    border-color: #000;
+    border-bottom: 0 !important;
+
+
+}
+
+.table a {
+    color: #f99f2b;
+
+
+}
+
+.table tbody {
+    border-top: none !important;
+
+}
+
+.table tr: {
+    margin: 0 !important;
+}
+
+.table tr:hover {
+    background-color: #50507c !important;
+    color: #FFF !important;
+}

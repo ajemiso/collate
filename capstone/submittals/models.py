@@ -6,11 +6,11 @@ class Person(models.Model):
     user = models.OneToOneField(User)
     joined_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return "{0.user}".format(self)
+    #def __str__(self):
+        #return "{0.user}".format(self)
 
-    def __repr__(self):
-        return "{__class__.__name__}({0.user})".format(self)
+    #def __repr__(self):
+    #return "{0.__class__.__name__}({0.user})".format(self)
 
 class Submittal(models.Model):
     ACCOUNT_TYPES = (
@@ -57,4 +57,7 @@ class Submittal(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
-        return "/submittal/{}/{}/".format(self.loan_processor.user, self.id)
+        return "/submittal/{}/{}/".format(self.loan_processor.username, self.id)
+
+    def __str__(self):
+        return str(self.loan_number)

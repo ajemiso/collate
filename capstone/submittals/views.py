@@ -33,10 +33,18 @@ def logout_user(request):
 
 
 @login_required
-def submittals(request, username):
+def dashboard(request, username):
+    if request.method == 'GET':
+        person = Person.objects.get(user=request.user)
+        submittals = person.submittals.all()
+    return render(request, 'dashboard.html', {'submittals': submittals})
 
+
+@login_required
+def submittals(request, username):
     form = SubmittalForm()
     return render(request, 'submittals.html', {'username': username, 'form': form})
+
 
 @login_required
 def save_submit(request):
@@ -46,13 +54,13 @@ def save_submit(request):
             submittal = form.save(commit=False)
             submittal.save()
             messages.add_message(request, messages.SUCCESS, 'Your file has been saved!')
-            submittal = Submittal.objects.get()
+            #submittal = Submittal.objects.get()
             return JsonResponse({'success': 'It worked!'})
     return JsonResponse({'errors': 'Dude this didn"t work.'})
 
+
 @login_required
 def load_submit(request, username, pk):
-    #import pdb; pdb.set_trace()
     submittal = Submittal.objects.get(id=pk)
     form = SubmittalForm(instance=submittal)
     return render(request, 'submittals.html', {'form': form})
