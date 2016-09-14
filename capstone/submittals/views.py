@@ -35,6 +35,7 @@ def logout_user(request):
 @login_required
 def dashboard(request, username):
     if request.method == 'GET':
+        #import pdb; pdb.set_trace()
         person = Person.objects.get(user=request.user)
         submittals = person.submittals.all()
     return render(request, 'dashboard.html', {'submittals': submittals})
@@ -49,20 +50,32 @@ def submittals(request, username):
 @login_required
 def save_submit(request):
     if request.method == 'POST':
-        form = SubmittalForm(request.POST or None)
+        loan_number = request.POST['loan_number']
+        instance = Submittal.objects.get(loan_number=loan_number)
+        form = SubmittalForm(request.POST, instance=instance)
         if form.is_valid():
             submittal = form.save(commit=False)
+            submittal.loan_processor = request.user.person
             submittal.save()
             messages.add_message(request, messages.SUCCESS, 'Your file has been saved!')
             #submittal = Submittal.objects.get()
-            return JsonResponse({'success': 'It worked!'})
+            return redirect(submittal.get_absolute_url())
+
     return JsonResponse({'errors': 'Dude this didn"t work.'})
 
 
 @login_required
-def load_submit(request, username, pk):
-    submittal = Submittal.objects.get(id=pk)
-    form = SubmittalForm(instance=submittal)
-    return render(request, 'submittals.html', {'form': form})
+def load_submit(request, username, pk=None):
+    if request.method == 'GET':
+        submittal = Submittal.objects.get(id=pk)
+        form = SubmittalForm(instance=submittal)
+        return render(request, 'submittals.html', {'form': form})
+
+    """if request.method == 'POST':
+        submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
+        form = SubmittalForm(instance=submittal)
+        return render(request, 'submittals.html', {'form': form})"""
+    return None
+
 
 

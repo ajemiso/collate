@@ -29,7 +29,9 @@ urlpatterns = [
     url(r'^logout_user/$', views.logout_user),
 
     # Submittals
+    url(r'^(?P<username>\w+)/submittals/new/$', views.submittals, name='submittals'),
     url(r'^save/', views.save_submit),
-    url(r'^(?P<username>\w+)/submittals/$', views.dashboard, name='submittals'),
+    url(r'^(?P<username>\w+)/submittals/$', views.dashboard, name='dashboard'),
     url(r'^(?P<username>\w+)/submittals/(?P<pk>\d+)/$', views.load_submit, name='load_submit'),
+    url(r'^load_loan_number/$', views.load_submit)
 ]

@@ -2,54 +2,65 @@
 
 {% block body %}
 
-<!-- error messages -->
-{% if messages %}
-
-<div class="row message-bar">
-    <section class="col-xs-offset-4 col-xs-4">
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-
-        </section>
-</div>
-
-{% endif %}
-<!-- end error messages -->
-
-
 
 <div class="container">
     
-    <div class="row">
-<header class="nav">
-    <ul class="nav nav-tabs col-md-3 col-sm-5 col-xs-6">
-      <li role="presentation" class="active"><a href="/{{ user.username }}/submittals/">Home</a></li>
-      <li role="presentation"><a onClick="saveSubmit(); return false;" id="save" href="">Save</a></li>
-      <li role="presentation"><a href="">Load</a></li>
-      <li role="presentation"><a href="">New</a></li>
-</ul>
-        <ul class="col-md-3 pull-right list-inline logout-list">
-            <li><h5>Hi, {{ request.user.username }}!</h5></li>
-            <li><a href="/logout_user/">Logout</a></li>
+<main>
+    <div class="message-row">
+        <article class="col-xs-12 submittal-messages">
+
+            <!-- error messages -->
+            {% if messages %}
+
+            <div class="row message-bar">
+                <section class="col-xs-offset-4 col-xs-4">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
             </ul>
 
+                    </section>
+            </div>
+
+            {% endif %}
+<!-- end error messages -->
+
+        </article>
 
 
-        </header>
     </div>
-    
-<main>
+
     <div class="row first-row">
-      <div class="col-md-9 main-area">
+
+        <article class="col-md-4 header-field">
+                    <form class="loan-number-field" id="loan_number_form">
+                      <div class="form-inline">
+                        <label for="loan_number">Loan Number*</label>
+                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+                         <div class=form-inline"> {{ form.loan_number }}</div>
+                      </div>
+                    </form>
+
+
+                </article>
+
+
+
+      <div class="col-md-12 main-area">
         <section class="section col-md-12">
             <div class="row">
-                <aside class="list-inline">
+                <aside class="list-inline col-xs-9">
                 <h4>B1 Primary Information</h4>
-                <input type="checkbox" name="show-b2" id="show-b2"> Add 2nd borrower
+                <input type="checkbox" name="show-b2" id="show-b2"> <i>Show 2nd borrower</i>
                 </aside>
+
+                 <aside class="col-xs-3">
+                 <form action="/{{ user.username }}/submittals/{{ form.id }}">
+                <button type="submit" class="btn btn-primary save-btn pull-right">Save</button>
+                     </form>
+                </aside>
+
 
 
                 <article class="col-md-4">
@@ -93,9 +104,9 @@
                 <article class="col-md-4">
                     <form class="borr-info-form">
                       <div class="form-group">
-                        <label for="loan_officer">Loan Number*</label>
+                        <label for="loan_officer">Loan Story*</label>
                         <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
-                          {{ form.loan_number }}
+                          {{ form.loan_story }}
                       </div>
                     </form>
 
@@ -133,14 +144,14 @@
         
         
         </div>
-      <div class="col-md-3 side-bar">
+      <!-- div class="col-md-3 side-bar">
         <section class="section hidden-lg-down">
             <div class="row"><h4>Quick Nav</h4></div>
             
           
           </section>
         
-        </div>
+        </div-->
         </div>
     <div class="row second-row">
       <div class="col-md-12 main-area">
@@ -273,12 +284,12 @@
         
         
         </div>
-      <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4"></div>
     </div>
     <div class="row">
-      <div class="col-md-6">.col-md-6</div>
-      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6"></div>
+      <div class="col-md-6"></div>
     </div>
     
     </main>

@@ -29,6 +29,7 @@ class Submittal(models.Model):
     account_type = models.CharField(max_length=256, blank=True, choices=ACCOUNT_TYPES)
     loan_officer = models.CharField(max_length=256, blank=True)
     loan_processor = models.ForeignKey(Person, related_name="submittals", null=True, blank=True)
+    loan_story = models.CharField(max_length=2560, blank=True)
 
     b1_first_name = models.CharField(max_length=256, blank=True)
     b1_last_name = models.CharField(max_length=256, blank=True)
@@ -57,7 +58,7 @@ class Submittal(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
-        return "/submittal/{}/{}/".format(self.loan_processor.username, self.id)
+        return "/{}/submittals/{}/".format(self.loan_processor.user.username, self.id)
 
     def __str__(self):
         return str(self.loan_number)

@@ -15,12 +15,13 @@ $( document ).ready(function () {
 
 // submittal page
 
-$('.first-row').hide();
-$('.section').hide();
+
+$('.submittal-list').hide();
 $('.b2').hide();
 
-$('.first-row').fadeIn();
-$('.section').fadeIn(600);
+
+$('.submittal-list').slideDown();
+
 
 
 $('#show-b2').click(function(evt) {

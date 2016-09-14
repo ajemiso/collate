@@ -1,3 +1,14 @@
+.messages {
+    list-style: none;
+    margin-top: 5px;
+}
+
+.message-bar {
+    background-color: #f99f2b;
+    color: white;
+    font-weight: 400;
+}
+
 body {
     background-color: #efeff5;
 }
@@ -42,7 +53,7 @@ h5 {
 }
 
 .first-row {
-
+    background-color: #FFF;
     
 }
 
@@ -69,6 +80,18 @@ h5 {
     
 }
 
+.loan-number-field {
+    background-color: #FFF;
+    margin-top: 15px;
+
+}
+
+.header-field {
+    background-color: #FFF;
+
+}
+
+
 .logout-list {
     margin-top: 6px;
 }
@@ -81,4 +104,9 @@ h5 {
     margin-left: 22px;
     font-size: 10px;
     font-style: italic;
+}
+
+.save-btn {
+    margin-top: 15px;
+    background-color: #50507c;
 }

@@ -2,55 +2,19 @@
 
 {% block body %}
 
-<!-- error messages -->
-{% if messages %}
-
-<div class="row message-bar">
-    <section class="col-xs-offset-4 col-xs-4">
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-
-        </section>
-</div>
-
-{% endif %}
-<!-- end error messages -->
-
-
 
 <div class="container">
 
-    <div class="row">
-<header class="nav">
-    <ul class="nav nav-tabs col-md-3 col-sm-5 col-xs-6">
-      <li role="presentation" class="active"><a href="{{ user.username }}/submittals/">Home</a></li>
-      <li role="presentation"><a onClick="saveSubmit(); return false;" id="save" href="">Save</a></li>
-      <li role="presentation"><a href="">Load</a></li>
-      <li role="presentation"><a href="">New</a></li>
-</ul>
-        <ul class="col-md-3 pull-right list-inline logout-list">
-            <li><h5>Hi, {{ request.user.username }}!</h5></li>
-            <li><a href="/logout_user/">Logout</a></li>
-            </ul>
-
-
-
-        </header>
-    </div>
-
 <main>
-    {% if submittals %}
-    <div class="row dashboard-first-row">
+    <section class="row dashboard-first-row">
         <table class="table table-hover submittal-list">
+        <tr>
             <th>Loan Number</th>
             <th>Member Last Name</th>
             <th>Member First Name</th>
             <th>Loan Officer</th>
             <th>Created On</th>
-
+        </tr>
         {% for s in submittals %}
             <tr>
                 <td><a href="/{{ request.user.username }}/submittals/{{ s.id }}">{{ s.loan_number }}</a></td>
@@ -64,9 +28,13 @@
 
 
         {% endfor %}
+
+
+
             </table>
+        </section>
+    <div class="nav-bottom"></div>
             </div>
-    {% endif %}
 
         </div>
       <div class="col-md-4"></div>
@@ -77,8 +45,11 @@
       <div class="col-md-6"></div>
     </div>
 
+
+
     </main>
     </div>
+
 
 
 {% endblock %}

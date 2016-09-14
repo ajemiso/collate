@@ -1,9 +1,13 @@
+'use strict';
+
 /**
  * Created by Dizz on 9/5/16.
  */
 
+// Save submittal function
+
 function saveSubmit() {
-    $data = $('input, textarea, select').serialize();
+    var $data = $('input, textarea, select').serialize();
 
     $.ajax({
         url: "/save/",
@@ -18,10 +22,34 @@ function saveSubmit() {
 
     });
 
+};
+
+// Save submittal event binding
+
+$('.save-btn').click(function(event) {
+    saveSubmit();
 
 
+});
 
 
+/* Load submittal -- ***ADD BUTTON NEXT TO LOAN NUMBER FIELD TO RETRIEVE DATA***
 
+$('#loan_number_form').submit(function(event) {
+		var data = { 'loan_number': $('#loan_number_field').value() }
 
+    $.ajax({
+        url: "/load_loan_number/",
+        type: 'POST',
+        data: data,
+        success: function (rsp) {
+            console.log(rsp);
+        },
+        error: function (rsp) {
+            console.log(rsp);
+        }
+
+    });
+
+}); */
 

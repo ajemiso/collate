@@ -19,8 +19,10 @@ class SubmittalForm(forms.ModelForm):
             'b1_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First'}),
             'b1_last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last'}),
             'loan_officer': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name Only'}),
+            'loan_story': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Loan Story',
+                                                                                        'rows': 5}),
             'account_type': forms.Select(attrs={'class': 'form-control'}),
-            'loan_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digits only'}),
+            'loan_number': forms.TextInput(attrs={'class': 'form-control', 'id': 'loan_number_field', 'placeholder': 'Digits only'}),
             'b2_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First'}),
             'b2_last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last'}),
 
