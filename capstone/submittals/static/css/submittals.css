@@ -1,3 +1,12 @@
+.title {
+    margin-top: 5px;
+    padding: 0px;
+    color: #f99f2b;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+    font-size: 32px;
+}
+
 .messages {
     list-style: none;
     margin-top: 5px;
@@ -108,5 +117,10 @@ h5 {
 
 .save-btn {
     margin-top: 15px;
+    background-color: #50507c;
+}
+
+.calc-btn {
+    margin-top: 10px;
     background-color: #50507c;
 }

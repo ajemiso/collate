@@ -12,6 +12,8 @@ class PersonForm(forms.ModelForm):
 
 class SubmittalForm(forms.ModelForm):
 
+
+
     class Meta:
         model = Submittal
         fields = '__all__'
@@ -22,7 +24,7 @@ class SubmittalForm(forms.ModelForm):
             'loan_story': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Loan Story',
                                                                                         'rows': 5}),
             'account_type': forms.Select(attrs={'class': 'form-control'}),
-            'loan_number': forms.TextInput(attrs={'class': 'form-control', 'id': 'loan_number_field', 'placeholder': 'Digits only'}),
+            'loan_number': forms.TextInput(attrs={'name': 'loan_number', 'class': 'form-control', 'id': 'loan_number_field', 'placeholder': 'Digits only'}),
             'b2_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First'}),
             'b2_last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last'}),
 

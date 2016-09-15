@@ -5,7 +5,7 @@
 
 <div class="container">
     
-<main>
+<main class="fade-in-body">
     <div class="message-row">
         <article class="col-xs-12 submittal-messages">
 
@@ -33,12 +33,14 @@
 
     <div class="row first-row">
 
-        <article class="col-md-4 header-field">
-                    <form class="loan-number-field" id="loan_number_form">
+        <article class="col-md-8 header-field">
+                    <form class="loan-number-field" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
                       <div class="form-inline">
                         <label for="loan_number">Loan Number*</label>
                         <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
-                         <div class=form-inline"> {{ form.loan_number }}</div>
+                         <div> {{ form.loan_number }}</div>
+                            {% load static %}
+                          <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"</aside>
                       </div>
                     </form>
 
@@ -56,9 +58,7 @@
                 </aside>
 
                  <aside class="col-xs-3">
-                 <form action="/{{ user.username }}/submittals/{{ form.id }}">
                 <button type="submit" class="btn btn-primary save-btn pull-right">Save</button>
-                     </form>
                 </aside>
 
 
@@ -195,6 +195,7 @@
                           <option>Weekly</option -->
                         </select>
                       </div>
+
                     </form>
 
 
@@ -208,6 +209,7 @@
                         <!-- textarea class="form-control" id="b1_income_output" rows="5"
                                   placeholder="All B1 income fields must be completed" readonly></textarea -->
                       </div>
+                        <button type="submit" class="btn btn-primary calc-btn pull-right">Calculate</button>
                     </form>
 
 
@@ -252,6 +254,10 @@
                           <option>Weekly</option>
                         </select -->
                       </div>
+
+                        <div class="form-group">
+
+                      </div>
                     </form>
 
 
@@ -265,6 +271,7 @@
                         <!-- textarea class="form-control" id="b2_income_output" rows="5"
                                   placeholder="All B2 income fields must be completed" readonly></textarea -->
                       </div>
+                        <button type="submit" class="btn btn-primary calc-btn pull-right">Calculate</button>
                     </form>
 
 

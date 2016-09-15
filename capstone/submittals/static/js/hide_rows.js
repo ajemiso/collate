@@ -4,23 +4,20 @@
 
 // dashboard page
 
-$('.submittal-list').hide();
 
-$( document ).ready(function () {
 
-    $('.submittal-list').fadeIn();
+$('.drop-down').hide().slideToggle();
 
-});
-
+$('.submittal-list').hide().fadeIn(700);
 
 // submittal page
 
+$('.title').hide().slideToggle(500);
 
-$('.submittal-list').hide();
+
+$('.fade-in-body').hide().fadeIn(700);
+
 $('.b2').hide();
-
-
-$('.submittal-list').slideDown();
 
 
 

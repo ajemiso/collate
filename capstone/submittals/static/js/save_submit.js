@@ -4,6 +4,18 @@
  * Created by Dizz on 9/5/16.
  */
 
+// set values on page load
+$("#loader").hide();
+
+$(document).ajaxStart(function() {
+    $("#loader").show(500);
+});
+
+$(document).ajaxComplete(function(){
+    $("#loader").hide();
+
+    });
+
 // Save submittal function
 
 function saveSubmit() {
@@ -22,16 +34,15 @@ function saveSubmit() {
 
     });
 
-};
+}
 
 // Save submittal event binding
 
 $('.save-btn').click(function(event) {
+
     saveSubmit();
 
-
 });
-
 
 /* Load submittal -- ***ADD BUTTON NEXT TO LOAN NUMBER FIELD TO RETRIEVE DATA***
 
