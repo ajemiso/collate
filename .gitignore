@@ -4,3 +4,4 @@ migrations
 __pycache*
 *.pyc
 cap-venv/
+.idea
