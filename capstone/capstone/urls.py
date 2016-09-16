@@ -16,6 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from submittals import views
+from rest_framework import routers
+from submittals.api import SubmittalViewSet
+
+router = routers.DefaultRouter()
+router.register(r'submits', SubmittalViewSet)
 
 urlpatterns = [
     # Django Admin Site
@@ -36,5 +41,6 @@ urlpatterns = [
     url(r'^load_loan_number/$', views.load_submit),
 
     #REST API
+    url(r'api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
 ]

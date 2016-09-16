@@ -1,3 +1,7 @@
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -7,6 +11,7 @@ from .models import Person, Submittal
 from .forms import SubmittalForm, PersonForm
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import AuthenticationForm
+from addons.income_calc import IncomeCalc
 
 
 def index(request):
@@ -99,5 +104,6 @@ def load_submit(request, username, pk=None):
     form = SubmittalForm(instance=submittal)
     return redirect(submittal.get_absolute_url())"""
 
-
-
+@api_view(['POST'])
+def calculate(request):
+    return Response()

@@ -1,8 +1,9 @@
 from rest_framework import viewsets
-from .serializers import PersonSerializer
+from .serializers import SubmittalSerializer
+from .models import Submittal
 
 
-class PersonViewSet(viewsets.ModelViewset):
+class SubmittalViewSet(viewsets.ModelViewSet):
 
-    queryset = Person.objects.all()
-    serializer_class = PersonSerializer
+    queryset = Submittal.objects.all()
+    serializer_class = SubmittalSerializer
