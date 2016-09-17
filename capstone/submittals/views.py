@@ -104,6 +104,60 @@ def load_submit(request, username, pk=None):
     form = SubmittalForm(instance=submittal)
     return redirect(submittal.get_absolute_url())"""
 
-@api_view(['POST'])
-def calculate(request):
-    return Response()
+#@api_view(['POST'])
+def calculate_income(request):
+    """
+    calculates income using REST API data
+    """
+
+    borrower = request.POST['borrower']
+
+    if request.method == 'POST':
+        data = request.POST.copy()
+
+        # change pay frequency value
+        if 'b1_pay_frequency' in data:
+            pay_type = data['b1_pay_frequency']
+
+            if pay_type == 'SM':
+                new_pay = 'semi-monthly'
+                data['b1_pay_frequency'] = new_pay
+            elif pay_type == 'BW':
+                new_pay = 'bi-weekly'
+                data['b1_pay_frequency'] = new_pay
+            elif pay_type == 'MO':
+                new_pay = 'monthly'
+                data['b1_pay_frequency'] = new_pay
+            elif pay_type =='WK':
+                new_pay = 'weekly'
+                data['b1_pay_frequency'] = new_pay
+            else:
+                raise ValueError('You did it wrong!')
+
+        elif 'b1_pay_frequency' in data:
+            pay_type = data['b2_pay_frequency']
+
+            if pay_type == 'SM':
+                new_pay = 'semi-monthly'
+                data['b2_pay_frequency'] = new_pay
+            elif pay_type == 'BW':
+                new_pay = 'bi-weekly'
+                data['b2_pay_frequency'] = new_pay
+            elif pay_type == 'MO':
+                new_pay = 'monthly'
+                data['b2_pay_frequency'] = pay_type
+            elif pay_type =='WK':
+                new_pay = 'weekly'
+                data['b2_pay_frequency'] = pay_type
+            else:
+                raise ValueError('You did it wrong!')
+
+        calculator = IncomeCalc(**data)
+        result = calculator.create_string()
+
+    if borrower == '1':
+        return JsonResponse({'b1_income_output': result})
+    elif borrower == '2':
+        return JsonResponse({'b2_income_output': result})
+    else:
+        return JsonResponse({'output': 'error'})

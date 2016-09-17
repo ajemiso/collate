@@ -1,35 +1,40 @@
 import datetime
 
-b1_income_info = {
-                'employer_name': 'Intel',
-                'start_date': '04/13/2008',
-                'income_amount': '$40,000.72',
-                'period_end_date': '11/01/2016',
-                'pay_frequency': 'semi-monthly'
-                }
-
-b2_income_info = {
-                'employer_name': 'Hewlett Packard',
-                'start_date': '02/23/2011',
-                'income_amount': '$60,000.34',
-                'period_end_date': '11/15/2016',
-                'pay_frequency': 'semi-monthly'
-                }
 
 class IncomeCalc(object):
 
     def __init__(self, *args, **kwargs):
-        self.employer_name = kwargs['employer_name']
-        self.start_date = kwargs['start_date']
-        self.income = kwargs['income_amount']
-        self.period_end_date = kwargs['period_end_date']
-        self.pay_frequency = kwargs['pay_frequency']
+        #import pdb; pdb.set_trace()
+
+        if kwargs['borrower'][0] == '1':
+            self.employer_name = kwargs['b1_employer_name'][0]
+            self.start_date = kwargs['b1_hire_date'][0]
+            self.income = kwargs['b1_income_amount'][0]
+            self.period_end_date = kwargs['b1_period_end_date'][0]
+            self.pay_frequency = kwargs['b1_pay_frequency'][0]
+
+
+        elif kwargs['borrower'][0] == '2':
+            self.employer_name = kwargs['b2_employer_name'][0]
+            self.start_date = kwargs['b2_hire_date'][0]
+            self.income = kwargs['b2_income_amount'][0]
+            self.period_end_date = kwargs['b2_period_end_date'][0]
+            self.pay_frequency = kwargs['b2_pay_frequency'][0]
+
+        """else:
+            self.employer_name = None
+            self.start_date = None
+            self.income = None
+            self.period_end_date = None
+            self.pay_frequency = None"""
+
 
     def income_calculator(self):
         """
         Calculates monthly income based on pay frequency
         """
-        income = self.income.replace('$', '')
+        income = self.income
+        income = income.replace('$', '')
         income = income.replace(',', '')
         income = float(income)
 
