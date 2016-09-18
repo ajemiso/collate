@@ -60,12 +60,8 @@ class IncomeCalc(object):
         "B1: employed with [employer] for [years], [pay type] pay,
         [dollar amount]/mo, good through [4 months out - date]"
         """
-
-        #employer_name = income['employer_name']
-        #start_date = income['start_date']
         income_amount = self.income_calculator()
-        #period_end_date = income['period_end_date']
-        #pay_frequency = income['pay_frequency']
+
 
         # convert string to datetime object
         start_date = datetime.datetime.strptime(self.start_date, '%m/%d/%Y')

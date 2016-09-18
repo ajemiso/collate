@@ -64,7 +64,7 @@ $('#calc-btn-b2').click(function(event) {
         type: 'POST',
         data: $data,
         success: function (rsp) {
-                console.log(rsp);
+                $('#b2_income_output').html(rsp['b2_income_output']);
             },
             error: function (rsp) {
                 console.log(rsp);

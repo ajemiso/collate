@@ -2,7 +2,41 @@
 
 {% block body %}
 
+<!-- background images -->
+
+<div class="row">
+    <section class="backdrop" id="backdrop">
+        <ul>{% load static %}
+            <li><img src="{% static  'img/landing/1.jpg' %}">
+            <li><img src="{% static  'img/landing/2.jpg' %}">
+            <li><img src="{% static  'img/landing/3.jpg' %}">
+            <li><img src="{% static  'img/landing/4.jpg' %}">
+            <li><img src="{% static  'img/landing/5.jpg' %}">
+            <li><img src="{% static  'img/landing/6.jpg' %}">
+            <li><img src="{% static  'img/landing/7.jpg' %}">
+            <li><img src="{% static  'img/landing/8.jpg' %}">
+            <li><img src="{% static  'img/landing/9.jpg' %}">
+            <li><img src="{% static  'img/landing/10.jpg' %}">
+            <li><img src="{% static  'img/landing/1.jpg' %}">
+            <li><img src="{% static  'img/landing/2.jpg' %}">
+            <li><img src="{% static  'img/landing/3.jpg' %}">
+            <li><img src="{% static  'img/landing/4.jpg' %}">
+            <li><img src="{% static  'img/landing/5.jpg' %}">
+            <li><img src="{% static  'img/landing/6.jpg' %}">
+            <li><img src="{% static  'img/landing/7.jpg' %}">
+            <li><img src="{% static  'img/landing/8.jpg' %}">
+            <li><img src="{% static  'img/landing/9.jpg' %}">
+            <li><img src="{% static  'img/landing/10.jpg' %}">
+
+        </ul>
+        </section>
+</div>
+
+<!-- end background -->
+
+
 {% if messages %}
+
 
 <div class="row message-bar">
     <section class="col-xs-offset-4 col-xs-4">
@@ -75,7 +109,13 @@
                 </div>
 
 
+ <div class="row">
+        <section class="col-xs-offset-5 col-xs-4" id="copyright">
+            Copyright &copy; 2016 Andre Jemison.
+        </section>
+
     </div>
+
 
 
 

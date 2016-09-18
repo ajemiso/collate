@@ -52,7 +52,6 @@ def dashboard(request, username):
     main dashboard with list of submittals for user
     """
     if request.method == 'GET':
-        #import pdb; pdb.set_trace()
         person = Person.objects.get(user=request.user)
         submittals = person.submittals.all()
     return render(request, 'dashboard.html', {'submittals': submittals})
@@ -104,7 +103,7 @@ def load_submit(request, username, pk=None):
     form = SubmittalForm(instance=submittal)
     return redirect(submittal.get_absolute_url())"""
 
-#@api_view(['POST'])
+@login_required
 def calculate_income(request):
     """
     calculates income using REST API data
@@ -134,7 +133,7 @@ def calculate_income(request):
             else:
                 raise ValueError('You did it wrong!')
 
-        elif 'b1_pay_frequency' in data:
+        elif 'b2_pay_frequency' in data:
             pay_type = data['b2_pay_frequency']
 
             if pay_type == 'SM':

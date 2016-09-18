@@ -3,7 +3,7 @@
  */
 
 // dashboard page
-
+'use strict';
 
 
 $('.drop-down').hide().slideToggle();
@@ -19,12 +19,33 @@ $('.fade-in-body').hide().fadeIn(700);
 
 $('.b2').hide();
 
+// if box was already checked, re-check it & show b2 fields
 
+if (localStorage.boxchecked === 'y') {
+    $('#show-b2').prop('checked', true)
+    $('.b2').slideDown();
 
-$('#show-b2').click(function(evt) {
-    $('.b2').slideToggle();
+}
+
+// changes checkbox "checked" value
+
+$('#show-b2').change(function(event) {
+    if (this.checked) {
+        localStorage.boxchecked = 'y';
+        $('.b2').slideDown();
+    } else {
+        localStorage.boxchecked = 'n';
+        $('.b2').slideUp();
+    }
+
 
 });
+
+
+/* $('#show-b2').click(function(evt) {
+    $('.b2').slideToggle();
+
+}); */
 
 
 
