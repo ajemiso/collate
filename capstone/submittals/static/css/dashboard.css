@@ -5,6 +5,11 @@
 
 }
 
+.table th {
+    background-color: #efeff5 !important;
+    color: #1e1e2f;
+}
+
 .table a {
     color: #f99f2b;
 
@@ -31,3 +36,12 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     color: white;
+
+}
+
+.delete-glyphicon {
+    margin-right: 30px;
+    font-size: 14px;
+    color: #f99f2b;
+    cursor: pointer;
+}

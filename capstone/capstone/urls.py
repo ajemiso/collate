@@ -39,9 +39,11 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/submittals/$', views.dashboard, name='dashboard'),
     url(r'^(?P<username>\w+)/submittals/(?P<pk>\d+)/$', views.load_submit, name='load_submit'),
     url(r'^load_loan_number/$', views.load_submit),
+    url(r'^delete/$', views.delete_submit, name='delete_submit'),
 
     #REST API
     url(r'api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^calculate/$', views.calculate_income, name='calculate_income')
+    url(r'^calculate/$', views.calculate_income, name='calculate_income'),
+
 ]

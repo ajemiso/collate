@@ -27,6 +27,7 @@ function saveSubmit() {
         data: $data,
         success: function (rsp) {
             console.log(rsp);
+            $('.message-bar').slideDown(300).delay(1500).slideUp(300);
         },
         error: function (rsp) {
             console.log(rsp);
@@ -44,23 +45,5 @@ $('.save-btn').click(function(event) {
 
 });
 
-/* Load submittal -- ***ADD BUTTON NEXT TO LOAN NUMBER FIELD TO RETRIEVE DATA***
 
-$('#loan_number_form').submit(function(event) {
-		var data = { 'loan_number': $('#loan_number_field').value() }
-
-    $.ajax({
-        url: "/load_loan_number/",
-        type: 'POST',
-        data: data,
-        success: function (rsp) {
-            console.log(rsp);
-        },
-        error: function (rsp) {
-            console.log(rsp);
-        }
-
-    });
-
-}); */
 

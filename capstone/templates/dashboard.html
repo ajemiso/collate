@@ -5,6 +5,26 @@
 
 <div class="container">
 
+    <!-- save messages -->
+
+            <div class="row message-bar">
+                <section class="col-xs-offset-4 col-xs-4">
+            <ul class="messages">
+                <li>Your file has been deleted!</li>
+            </ul>
+
+                    </section>
+            </div>
+<!-- end error messages -->
+
+
+ <!-- jQuery UI dialog box -->
+
+    <div class="dialog"></div>
+
+<!-- end dialog box -->
+
+
 <main class="drop-down">
     <section class="row dashboard-first-row">
         <table class="table table-hover submittal-list">
@@ -16,13 +36,16 @@
             <th>Created On</th>
         </tr>
         {% for s in submittals %}
-            <tr>
+            <tr id="item-{{ s.id }}">
                 <td><a href="/{{ request.user.username }}/submittals/{{ s.id }}">{{ s.loan_number }}</a></td>
                 <td>{{ s.b1_last_name }}</td>
                 <td>{{ s.b1_first_name }}</td>
                 <td>{{ s.loan_officer }}</td>
                 <td>{{ s.created_at }}</td>
-
+                <td><a href="/{{ request.user.username }}/submittals/{{ s.id }}"><span title="Edit" id="{{ s.id }}"
+                          class="glyphicon glyphicon-pencil edit-glyphicon"></span></a></td>
+                <td><span title="Delete" id="{{ s.id }}"
+                          class="glyphicon glyphicon-remove delete-glyphicon delete-submit"></span></td>
 
             </tr>
 

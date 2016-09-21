@@ -10,6 +10,24 @@ $('.drop-down').hide().slideToggle();
 
 $('.submittal-list').hide().fadeIn(700);
 
+// get length of table
+var $table_length = $('.submittal-list tr').length;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // submittal page
 
 $('.title').hide().slideToggle(500);

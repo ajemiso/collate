@@ -9,21 +9,17 @@
     <div class="message-row">
         <article class="col-xs-12 submittal-messages">
 
-            <!-- error messages -->
-            {% if messages %}
+            <!-- save messages -->
 
             <div class="row message-bar">
                 <section class="col-xs-offset-4 col-xs-4">
             <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
+                <li>Your file has been saved!</li>
             </ul>
 
                     </section>
             </div>
 
-            {% endif %}
 <!-- end error messages -->
 
         </article>

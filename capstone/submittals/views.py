@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .serializers import SubmittalSerializer
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -53,7 +54,7 @@ def dashboard(request, username):
     """
     if request.method == 'GET':
         person = Person.objects.get(user=request.user)
-        submittals = person.submittals.all()
+        submittals = person.submittals.all().order_by('-created_at')
     return render(request, 'dashboard.html', {'submittals': submittals})
 
 
@@ -79,7 +80,6 @@ def save_submit(request):
             submittal = form.save(commit=False)
             submittal.loan_processor = request.user.person
             submittal.save()
-            messages.add_message(request, messages.SUCCESS, 'Your file has been saved!')
             pk = submittal.id
             return JsonResponse({'pk': pk})
     return JsonResponse({'errors': 'Dude this didn"t work.'})
@@ -99,14 +99,22 @@ def load_submit(request, username, pk=None):
         submittal = Submittal.objects.get(id=pk)
         form = SubmittalForm(instance=submittal)
         return render(request, 'submittals.html', {'form': form})
-    """submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
-    form = SubmittalForm(instance=submittal)
-    return redirect(submittal.get_absolute_url())"""
+
+
+@api_view(['DELETE'])
+@login_required
+def delete_submit(request):
+    submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
+
+    if request.method == 'POST':
+        submittal.delete()
+        return JsonResponse({'success': 'File {} has been deleted'.format(submittal.loan_number)})
+
 
 @login_required
 def calculate_income(request):
     """
-    calculates income using REST API data
+    calculates income for a borrower
     """
 
     borrower = request.POST['borrower']

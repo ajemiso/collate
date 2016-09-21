@@ -1,21 +1,30 @@
-.title {
+.title a {
     margin-top: 5px;
     padding: 0px;
-    color: #f99f2b;
+    color: #f99f2b !important;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     letter-spacing: 0;
     font-size: 32px;
 }
 
+.title a:hover {
+    text-decoration: none;
+}
+
 .messages {
     list-style: none;
     margin-top: 5px;
+    margin-left: 20px;
 }
 
 .message-bar {
+    display: none;
     background-color: #f99f2b;
     color: white;
     font-weight: 400;
+    font-size: 16px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 body {
@@ -59,6 +68,14 @@ h5 {
     border-top-left-radius: 10px;
     color: white;
     
+}
+
+.nav .active a {
+    background-color: #50507c !important;
+}
+
+.nav-pills a:hover {
+    background-color: #d0d0e1 !important;
 }
 
 .first-row {

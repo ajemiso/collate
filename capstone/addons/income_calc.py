@@ -21,12 +21,12 @@ class IncomeCalc(object):
             self.period_end_date = kwargs['b2_period_end_date'][0]
             self.pay_frequency = kwargs['b2_pay_frequency'][0]
 
-        """else:
+        else:
             self.employer_name = None
             self.start_date = None
             self.income = None
             self.period_end_date = None
-            self.pay_frequency = None"""
+            self.pay_frequency = None
 
 
     def income_calculator(self):
