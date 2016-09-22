@@ -1,3 +1,5 @@
+import json
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -46,7 +48,6 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-
 @login_required
 def dashboard(request, username):
     """
@@ -55,7 +56,11 @@ def dashboard(request, username):
     if request.method == 'GET':
         person = Person.objects.get(user=request.user)
         submittals = person.submittals.all().order_by('-created_at')
-    return render(request, 'dashboard.html', {'submittals': submittals})
+        loan_list = list(submittals.values_list('loan_number', flat=True))
+        loan_strings = list(map(str, loan_list))
+        loan_numbers = json.dumps(loan_strings)
+
+    return render(request, 'dashboard.html', {'submittals': submittals, 'autolist': loan_numbers })
 
 
 @login_required

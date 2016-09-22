@@ -74,5 +74,27 @@
     </div>
 
 
+<div class="hidden" id="autolist">
+
+
+
+</div>
+
+<script>
+
+$('#search-box').keyup(function(event) {
+
+        $(function() {
+            var availableTags = {{ autolist|safe }};
+            $('#search-box').autocomplete({
+                source: availableTags
+            });
+        })
+
+});
+
+
+
+</script>
 
 {% endblock %}

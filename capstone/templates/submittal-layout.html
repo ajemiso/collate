@@ -9,11 +9,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/submittals.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-2 title"><a href='/'>Collate.</a></div>
+        <section class="col-xs-2 title"><a href='/'>Collate.</a></section>
+
+        <section class="ui-widget col-xs-4 pull-right">
+            <input type="search" name="search" class="form-control" id="search-box" placeholder="Search for loan number">
+
+        </section>
     </div>
 
 
@@ -40,7 +47,6 @@
 </body>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -49,4 +55,5 @@
 <script src="{% static 'js/csrf.js' %}"></script>
 <script src="{% static 'js/income_calc.js' %}"></script>
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
 </html>

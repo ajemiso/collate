@@ -74,6 +74,7 @@ input {
 
 .backdrop {
     position: absolute;
+    z-index: -1;
     display: block;
     width: 100%;
     top: 0 !important;
@@ -118,4 +119,32 @@ input {
 #copyright {
     color: #f99f2b;
     font-size: small;
+}
+
+#scroll-title {
+    margin-top: 15%;
+    background-color: #f99f2b;
+    margin-bottom: 0;
+    color: #FFF;
+}
+
+#index-row-two {
+    background-color: #50507c;
+    height: 600px;
+    z-index: 1;
+    margin-top: 0;
+}
+
+#index-row-three {
+    background-color: #0a0a10;
+    height: 600px;
+    z-index: 1;
+    margin-top: 0;
+}
+
+#index-row-four {
+    background-color: #efeff5;
+    height: 600px;
+    z-index: 1;
+    margin-top: 0;
 }
