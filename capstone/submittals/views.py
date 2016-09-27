@@ -1,20 +1,21 @@
-import json
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, login, authenticate
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.contrib.auth.forms import AuthenticationForm
 
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SubmittalSerializer
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout, login, authenticate
-from django.contrib import messages
-from .models import Person, Submittal
 from .forms import SubmittalForm, PersonForm
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.contrib.auth.forms import AuthenticationForm
 from addons.income_calc import IncomeCalc
+from .models import Person, Submittal
+
+import json
 
 
 def index(request):
