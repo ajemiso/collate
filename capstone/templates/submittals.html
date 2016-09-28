@@ -72,6 +72,11 @@
                         <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
                       </div>
                       <div class="form-group">
+                        <label for="b1_email_address">Mobile Number</label>
+                          {{ form.b1_phone_number }}
+                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
+                      </div>
+                      <div class="form-group">
                         <p class="help-block">* = required field</p>
                     </form>
                 
@@ -91,6 +96,11 @@
                           <!-- option selected="selected">Equity Line of Credit</option -->
                           <!-- option>Equity Loan</option -->
                         <!-- /select -->
+                      </div>
+                        <div class="form-group">
+                        <label for="b1_email_address">Email</label>
+                          {{ form.b1_email_address }}
+                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
                       </div>
                     </form>
                 
@@ -129,10 +139,25 @@
                       </div>
                       <div class="form-group">
                     </form>
-                
-                
+
                 </article>
-                 
+
+                <article class="col-md-4">
+                    <form class="borr-info-form">
+                        <div class="form-group">
+                        <label for="b2_email_address">Mobile Number</label>
+                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+                        {{ form.b2_phone_number }}
+                      </div>
+                      <div class="form-group">
+                        <label for="b2_email_address">Email</label>
+                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+                        {{ form.b2_email_address }}
+                      </div>
+
+                    </form>
+                    </article>
+
             
             </div>
           
@@ -201,6 +226,8 @@
 
 
                 </article>
+
+
                 <!-- area for B1 string concatenation output -->
                 <article class="col-md-4">
                     <form class="borr-info-form">
@@ -285,6 +312,11 @@
                  
             
             </div>
+
+
+
+
+
           
           </section>
         
@@ -297,13 +329,92 @@
         
         
         </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4"></div>
     </div>
-    <div class="row">
-      <div class="col-md-6"></div>
-      <div class="col-md-6"></div>
+
+
+<!-- Contact Member Row -->
+
+    <div class="row third-row">
+      <div class="col-md-12 main-area">
+        <section class="section">
+            <div class="row email-row">
+                <h4>Contact Member</h4>
+                <article class="col-xs-6">
+                    <form class="borr-info-form">
+                      <div class="form-group">
+                        <label for="b1_email_address">B1 Email:</label>
+                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
+                        {{ form.b1_email_address.value }}
+                      </div>
+                      <div class="form-group">
+                        <label for="b2_email_address">B2 Email:</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.b2_email_address.value }}
+                      </div>
+
+                    <section class="row">
+                        <div class="form-group col-xs-8">
+                        <label for="email_template_select">Select a Template</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.email_template_select }}
+                      </div>
+                    </section>
+
+
+                        <div class="form-group">
+                        <label for="email_message">Message*</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.email_message }}
+                      </div>
+                      <div class="form-group">
+                        <p class="help-block">* = required field</p>
+                    </form>
+                </article>
+
+
+                <article class="col-xs-6">
+                    <form class="borr-info-form">
+                      <div class="form-group">
+                        <label for="b1_phone_number">B1 Phone Number:</label>
+                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
+                        {{ form.b1_phone_number.value }}
+                      </div>
+                      <div class="form-group">
+                        <label for="b2_phone_number">B2 Phone Number:</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.b2_phone_number.value }}
+                      </div>
+
+                    <section class="row">
+                        <div class="form-group col-xs-8">
+                        <label for="sms_template_select">Select a Template</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.sms_template_select }}
+                      </div>
+                    </section>
+
+
+                        <div class="form-group">
+                        <label for="email_message">Message*</label>
+                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+                        {{ form.email_message }}
+                      </div>
+
+                    </form>
+                </article>
+
+
+
+            </div>
+
+
+          </section>
+
+
+
+        </div>
     </div>
+
     
     </main>
     </div>

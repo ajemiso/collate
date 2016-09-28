@@ -25,6 +25,20 @@ class Submittal(models.Model):
         ('WK', 'Weekly'),
     )
 
+    EMAIL_TEMPLATE_TYPES = (
+        ('IN', 'Initial Contact - Email'),
+        ('PR', 'Processor Submit - Email'),
+        ('IA', 'Initial Approval - Email'),
+        ('FN', 'Final Approval - Email'),
+    )
+
+    SMS_TEMPLATE_TYPES = (
+        ('IN', 'Initial Contact - SMS'),
+        ('PR', 'Processor Submit - SMS'),
+        ('IA', 'Initial Approval - SMS'),
+        ('FN', 'Final Approval - SMS'),
+    )
+
     loan_number = models.PositiveIntegerField(unique=True)
     account_type = models.CharField(max_length=256, blank=True, choices=ACCOUNT_TYPES)
     loan_officer = models.CharField(max_length=256, blank=True)
@@ -39,6 +53,15 @@ class Submittal(models.Model):
 
     b1_employer_name = models.CharField(max_length=256, blank=True)
     b2_employer_name = models.CharField(max_length=256, blank=True)
+
+    b1_phone_number = models.CharField(max_length=256, blank=True)
+    b2_phone_number = models.CharField(max_length=256, blank=True)
+    sms_template_select = models.CharField(max_length=256, blank=True, choices=SMS_TEMPLATE_TYPES)
+
+    b1_email_address = models.EmailField(max_length=256, blank=True)
+    b2_email_address = models.EmailField(max_length=256, blank=True)
+    email_template_select = models.CharField(max_length=256, blank=True, choices=EMAIL_TEMPLATE_TYPES)
+    email_message = models.CharField(max_length=2048, blank=True)
 
     b1_hire_date = models.CharField(max_length=256, blank=True)
     b2_hire_date = models.CharField(max_length=256, blank=True)
