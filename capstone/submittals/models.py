@@ -57,6 +57,7 @@ class Submittal(models.Model):
     b1_phone_number = models.CharField(max_length=256, blank=True)
     b2_phone_number = models.CharField(max_length=256, blank=True)
     sms_template_select = models.CharField(max_length=256, blank=True, choices=SMS_TEMPLATE_TYPES)
+    sms_message = models.CharField(max_length=512, blank=True)
 
     b1_email_address = models.EmailField(max_length=256, blank=True)
     b2_email_address = models.EmailField(max_length=256, blank=True)

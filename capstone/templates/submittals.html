@@ -218,8 +218,8 @@
                           <option>Bi-Weekly</option>
                           <option>Semi-Monthly</option>
                           <option>Monthly</option>
-                          <option>Weekly</option -->
-                        </select>
+                          <option>Weekly</option>
+                        </select -->
                       </div>
 
                     </form>
@@ -388,19 +388,52 @@
                     <section class="row">
                         <div class="form-group col-xs-8">
                         <label for="sms_template_select">Select a Template</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
-                        {{ form.sms_template_select }}
+                        <select class="form-control" id="sms_template_select">
+                          <option selected>--------</option>
+                          <option>Initial Contact - SMS</option>
+                          <option>Processor Submit - SMS</option>
+                          <option>Initial Approval - SMS</option>
+                          <option>Final Approval - SMS</option>
+                        </select>
+                        <!-- {{ form.sms_template_select }} -->
                       </div>
                     </section>
 
 
                         <div class="form-group">
-                        <label for="email_message">Message*</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
-                        {{ form.email_message }}
+                        <label for="sms_message">Message*</label>
+                        <textarea class="form-control" rows='15' id="sms_message"></textarea>
+                        <!-- {{ form.sms_message }} -->
                       </div>
 
                     </form>
+
+                    <!-- start jQuery SMS Message script -->
+
+                    <script>
+                        var $data = {{ sms_messages|safe }};
+                        var $selected = $('#sms_template_select');
+                        var $sms = $('#sms_message');
+
+                        $('#sms_template_select').change(function(event) {
+
+                            if ($selected.val() === 'Initial Contact - SMS') {
+                                $sms.val($data['IN']);
+                                console.log('test');
+                            } else if ($selected.val() === 'Processor Submit - SMS') {
+                                $sms.val($data['PR']);
+                            } else if ($selected.val() === 'Initial Approval - SMS') {
+                                $sms.val($data['IA']);
+                            } else if ($selected.val() === 'Final Approval - SMS') {
+                                $sms.val($data['FN']);
+                            } else {
+                                $sms = 'foo';
+                            }
+
+                        });
+
+                    </script>
+
                 </article>
 
 

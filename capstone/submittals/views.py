@@ -13,6 +13,7 @@ from .serializers import SubmittalSerializer
 
 from .forms import SubmittalForm, PersonForm
 from addons.income_calc import IncomeCalc
+from addons.messages import SMS_MESSAGES, EMAIL_MESSAGES
 from .models import Person, Submittal
 
 import json
@@ -70,7 +71,9 @@ def submittals(request, username):
     submittal form page
     """
     form = SubmittalForm()
-    return render(request, 'submittals.html', {'username': username, 'form': form})
+    sms_messages = json.dumps(SMS_MESSAGES)
+    email_messages = json.dumps(EMAIL_MESSAGES)
+    return render(request, 'submittals.html', {'username': username, 'form': form, 'sms_messages': sms_messages, 'email_messages': email_messages })
 
 
 @login_required
@@ -99,22 +102,30 @@ def load_submit(request, username, pk=None):
     if request.method == 'GET':
         submittal = Submittal.objects.get(id=pk)
         form = SubmittalForm(instance=submittal)
-        return render(request, 'submittals.html', {'form': form})
+        sms_messages = json.dumps(SMS_MESSAGES)
+        email_messages = json.dumps(EMAIL_MESSAGES)
+        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages, 'email_messages': email_messages })
 
     if request.method == 'POST':
         submittal = Submittal.objects.get(id=pk)
         form = SubmittalForm(instance=submittal)
-        return render(request, 'submittals.html', {'form': form})
+        sms_messages = json.dumps(SMS_MESSAGES)
+        email_messages = json.dumps(EMAIL_MESSAGES)
+        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages, 'email_messages': email_messages })
 
 
 @api_view(['DELETE'])
 @login_required
 def delete_submit(request):
-    submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
+    submittal = Submittal.objects.get(loan_number=request.DELETE['loan_number'])
+    submittal.delete()
+    return JsonResponse({'success': 'File {} has been deleted'.format(submittal.loan_number)})
 
-    if request.method == 'POST':
-        submittal.delete()
-        return JsonResponse({'success': 'File {} has been deleted'.format(submittal.loan_number)})
+
+@api_view(['POST'])
+@login_required
+def auto_save(request):
+    submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
 
 
 @login_required
@@ -174,3 +185,4 @@ def calculate_income(request):
         return JsonResponse({'b2_income_output': result})
     else:
         return JsonResponse({'output': 'error'})
+
