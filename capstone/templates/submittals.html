@@ -402,7 +402,7 @@
 
                         <div class="form-group">
                         <label for="sms_message">Message*</label>
-                        <textarea class="form-control" rows='15' id="sms_message"></textarea>
+                        <textarea class="form-control" rows='15' id="sms_message" readonly></textarea>
                         <!-- {{ form.sms_message }} -->
                       </div>
 
@@ -414,20 +414,62 @@
                         var $data = {{ sms_messages|safe }};
                         var $selected = $('#sms_template_select');
                         var $sms = $('#sms_message');
+                        var saveFirst = 'Please save file before continuing.';
+                        var re = /\s\w*,/
+                        var $llama;
+
+
+                        function checkValue() {
+                            if ($('#b1_first_name').val() !== '') {
+                                $.each($data, function( key, value ) {
+                                    var $thingy = ' ' + $('#b1_first_name').val() + ',';
+                                    $llama = value.replace(re, $thingy);
+                                    $data[key] = $llama;
+                                });
+                            }
+
+                        }
+
+
+                        $('#sms_message').val(saveFirst);
 
                         $('#sms_template_select').change(function(event) {
 
                             if ($selected.val() === 'Initial Contact - SMS') {
+                                checkValue();
                                 $sms.val($data['IN']);
-                                console.log('test');
                             } else if ($selected.val() === 'Processor Submit - SMS') {
+                                checkValue();
                                 $sms.val($data['PR']);
                             } else if ($selected.val() === 'Initial Approval - SMS') {
+                                checkValue();
                                 $sms.val($data['IA']);
                             } else if ($selected.val() === 'Final Approval - SMS') {
+                                checkValue();
                                 $sms.val($data['FN']);
                             } else {
-                                $sms = 'foo';
+                                $sms.val('Please select a message type above');
+                            }
+
+                        });
+
+
+                        $('#b1_first_name').keyup(function(event) {
+
+                            if ($selected.val() === 'Initial Contact - SMS') {
+                                checkValue();
+                                $sms.val($data['IN']);
+                            } else if ($selected.val() === 'Processor Submit - SMS') {
+                                checkValue();
+                                $sms.val($data['PR']);
+                            } else if ($selected.val() === 'Initial Approval - SMS') {
+                                checkValue();
+                                $sms.val($data['IA']);
+                            } else if ($selected.val() === 'Final Approval - SMS') {
+                                checkValue();
+                                $sms.val($data['FN']);
+                            } else {
+                                $sms.val('Please select a message type above');
                             }
 
                         });

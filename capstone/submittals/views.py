@@ -101,17 +101,35 @@ def load_submit(request, username, pk=None):
     """
     if request.method == 'GET':
         submittal = Submittal.objects.get(id=pk)
+
+        b1_first_name = submittal.b1_first_name
+        loan_processor = request.user.username
+        loan_officer = submittal.loan_officer
+
         form = SubmittalForm(instance=submittal)
-        sms_messages = json.dumps(SMS_MESSAGES)
+        fulfilled_sms_messages = {k: v.format(b1_first_name=b1_first_name, loan_processor=loan_processor,
+                                              loan_officer=loan_officer) for k, v in SMS_MESSAGES.items()}
+
+        sms_messages = json.dumps(fulfilled_sms_messages)
         email_messages = json.dumps(EMAIL_MESSAGES)
-        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages, 'email_messages': email_messages })
+        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages,
+                                                   'email_messages': email_messages })
 
     if request.method == 'POST':
         submittal = Submittal.objects.get(id=pk)
+
+        b1_first_name = submittal.b1_first_name
+        loan_processor = request.user.username
+        loan_officer = submittal.loan_officer
+
         form = SubmittalForm(instance=submittal)
-        sms_messages = json.dumps(SMS_MESSAGES)
+        fulfilled_sms_messages = {k: v.format(b1_first_name=b1_first_name, loan_processor=loan_processor, loan_officer=loan_officer) for k, v in
+        SMS_MESSAGES.items()}
+
+        sms_messages = json.dumps(fulfilled_sms_messages)
         email_messages = json.dumps(EMAIL_MESSAGES)
-        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages, 'email_messages': email_messages })
+        return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages,
+                                                   'email_messages': email_messages })
 
 
 @api_view(['DELETE'])
@@ -126,6 +144,8 @@ def delete_submit(request):
 @login_required
 def auto_save(request):
     submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
+    if submittal is not None:
+        return Response()
 
 
 @login_required

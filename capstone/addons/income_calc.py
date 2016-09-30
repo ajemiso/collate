@@ -4,7 +4,6 @@ import datetime
 class IncomeCalc(object):
 
     def __init__(self, *args, **kwargs):
-        #import pdb; pdb.set_trace()
 
         if kwargs['borrower'][0] == '1':
             self.employer_name = kwargs['b1_employer_name'][0]

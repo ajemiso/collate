@@ -17,7 +17,7 @@ class SubmittalForm(forms.ModelForm):
         model = Submittal
         fields = '__all__'
         widgets = {
-            'b1_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First'}),
+            'b1_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First', 'id': 'b1_first_name'}),
             'b1_last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last'}),
             'loan_officer': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name Only'}),
             'loan_story': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Loan Story',
