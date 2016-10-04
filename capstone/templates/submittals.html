@@ -72,7 +72,7 @@
                         <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
                       </div>
                       <div class="form-group">
-                        <label for="b1_email_address">Mobile Number</label>
+                        <label for="b1_phone_number">Mobile Number</label>
                           {{ form.b1_phone_number }}
                         <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
                       </div>
@@ -145,7 +145,7 @@
                 <article class="col-md-4">
                     <form class="borr-info-form">
                         <div class="form-group">
-                        <label for="b2_email_address">Mobile Number</label>
+                        <label for="b2_phone_number">Mobile Number</label>
                         <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
                         {{ form.b2_phone_number }}
                       </div>
@@ -339,40 +339,10 @@
         <section class="section">
             <div class="row email-row">
                 <h4>Contact Member</h4>
-                <article class="col-xs-6">
-                    <form class="borr-info-form">
-                      <div class="form-group">
-                        <label for="b1_email_address">B1 Email:</label>
-                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
-                        {{ form.b1_email_address.value }}
-                      </div>
-                      <div class="form-group">
-                        <label for="b2_email_address">B2 Email:</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
-                        {{ form.b2_email_address.value }}
-                      </div>
-
-                    <section class="row">
-                        <div class="form-group col-xs-8">
-                        <label for="email_template_select">Select a Template</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
-                        {{ form.email_template_select }}
-                      </div>
-                    </section>
 
 
-                        <div class="form-group">
-                        <label for="email_message">Message*</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
-                        {{ form.email_message }}
-                      </div>
-                      <div class="form-group">
-                        <p class="help-block">* = required field</p>
-                    </form>
-                </article>
 
-
-                <article class="col-xs-6">
+                <article class="col-xs-offset-1 col-xs-10">
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_phone_number">B1 Phone Number:</label>
@@ -402,11 +372,27 @@
 
                         <div class="form-group">
                         <label for="sms_message">Message*</label>
-                        <textarea class="form-control" rows='15' id="sms_message" readonly></textarea>
+                        <textarea class="form-control" rows='10' id="sms_message" readonly></textarea>
                         <!-- {{ form.sms_message }} -->
                       </div>
 
+
+
                     </form>
+
+                    <div class="row">
+                        <section class="col-xs-6">
+                            <div class="form-group">
+                                <p class="help-block">* = required field</p>
+                                  </div>
+                        </section>
+
+                        <section class="col-xs-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary sms-btn pull-right" id="sms-btn">Send</button>
+                                  </div>
+                        </section>
+                    </div>
 
                     <!-- start jQuery SMS Message script -->
 

@@ -28,13 +28,15 @@ class SubmittalForm(forms.ModelForm):
             'b2_first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First'}),
             'b2_last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last'}),
 
-            'b1_phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '555-555-5555'}),
-            'b2_phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '555-555-5555'}),
+            'b1_phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '555-555-5555',
+                                                      'id': 'b1_phone_number'}),
+            'b2_phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '555-555-5555',
+                                                      'id': 'b2_phone_number'}),
             'sms_template_select': forms.Select(attrs={'class': 'form-control', 'id': 'sms_template_select'}),
             'sms_message': forms.Textarea(attrs={'class': 'form-control',
                                                  'placeholder': '',
                                                  'id': 'sms_message',
-                                                 'rows': 15,
+                                                 'rows': 10,
                                                    }),
 
             'b1_email_address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name@example.com'}),

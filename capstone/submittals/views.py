@@ -11,10 +11,14 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SubmittalSerializer
 
+from _private.secret import account_sid, auth_token
 from .forms import SubmittalForm, PersonForm
 from addons.income_calc import IncomeCalc
 from addons.messages import SMS_MESSAGES, EMAIL_MESSAGES
 from .models import Person, Submittal
+
+from twilio import TwilioRestException
+from twilio.rest import TwilioRestClient
 
 import json
 
@@ -103,7 +107,7 @@ def load_submit(request, username, pk=None):
         submittal = Submittal.objects.get(id=pk)
 
         b1_first_name = submittal.b1_first_name
-        loan_processor = request.user.username
+        loan_processor = 'Andre'# request.user.username
         loan_officer = submittal.loan_officer
 
         form = SubmittalForm(instance=submittal)
@@ -146,6 +150,30 @@ def auto_save(request):
     submittal = Submittal.objects.get(loan_number=request.POST['loan_number'])
     if submittal is not None:
         return Response()
+
+
+@login_required
+def sms_message(request):
+    """ Sends SMS message to client upon request """
+    import pdb;
+    pdb.set_trace()
+    if request.method == 'POST':
+        client = TwilioRestClient(account_sid, auth_token)
+
+        if request.POST['loan_number'] != '':
+            recipient_data = request.POST.get('recipients')
+            recipients = list(map(str.strip, recipient_data))
+            recipients = ['+1{}'.format(number) for number in recipients]
+
+            try:
+                message = client.messages.create(body=request.POST.get('sms_message'),
+                                                 to=recipients,
+                                                 from_=request.POST['sender']
+                                                 )
+            except TwilioRestException as e:
+                return JsonResponse({'error': e})
+        return JsonResponse({'success': '204'})
+
 
 
 @login_required

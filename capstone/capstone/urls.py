@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/submittals/(?P<pk>\d+)/$', views.load_submit, name='load_submit'),
     url(r'^load_loan_number/$', views.load_submit),
     url(r'^delete/$', views.delete_submit, name='delete_submit'),
+    url(r'^sms/$', views.sms_message, name='sms_message'),
 
     #REST API
     url(r'api/', include(router.urls)),
