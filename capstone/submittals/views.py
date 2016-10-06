@@ -155,23 +155,24 @@ def auto_save(request):
 @login_required
 def sms_message(request):
     """ Sends SMS message to client upon request """
-    import pdb;
-    pdb.set_trace()
     if request.method == 'POST':
         client = TwilioRestClient(account_sid, auth_token)
 
         if request.POST['loan_number'] != '':
-            recipient_data = request.POST.get('recipients')
+            recipient_data = request.POST.getlist('recipients[]')
+            #import pdb; pdb.set_trace()
             recipients = list(map(str.strip, recipient_data))
-            recipients = ['+1{}'.format(number) for number in recipients]
+            recipients = ['+1{}'.format(number) for number in recipients if number != '']
 
             try:
-                message = client.messages.create(body=request.POST.get('sms_message'),
-                                                 to=recipients,
-                                                 from_=request.POST['sender']
-                                                 )
+                for number in recipients:
+                    message = client.messages.create(body=request.POST.get('sms_message'),
+                                                     to=number,
+                                                     from_=request.POST['sender']
+                                                     )
             except TwilioRestException as e:
-                return JsonResponse({'error': e})
+                print(e)
+                return JsonResponse({'error': 'error'})
         return JsonResponse({'success': '204'})
 
 

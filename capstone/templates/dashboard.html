@@ -36,8 +36,8 @@
             <th>Created On</th>
         </tr>
         {% for s in submittals %}
-            <tr id="item-{{ s.id }}">
-                <td><a href="/{{ request.user.username }}/submittals/{{ s.id }}">{{ s.loan_number }}</a></td>
+            <tr class="data-row" id="item-{{ s.id }}">
+                <td class="loan-numbers"><a href="/{{ request.user.username }}/submittals/{{ s.id }}">{{ s.loan_number }}</a></td>
                 <td>{{ s.b1_last_name }}</td>
                 <td>{{ s.b1_first_name }}</td>
                 <td>{{ s.loan_officer }}</td>

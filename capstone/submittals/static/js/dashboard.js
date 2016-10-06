@@ -1,5 +1,5 @@
 /**
- * Created by Dizz on 9/19/16.
+ * Created by Dizz on 9/19/16.  All Dashboard Javascript functions
  */
 
 // DELETE submittal from dashboard

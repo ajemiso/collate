@@ -1,5 +1,5 @@
 /*
- * Created by Dizz on 9/5/16.
+ * Created by Dizz on 9/5/16. all row hiding functions
  */
 
 // dashboard page
