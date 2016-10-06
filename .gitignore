@@ -3,6 +3,8 @@
 _private
 migrations
 __pycache__
+__pycache__/
+__pycache__/*
 *.pyc
 cap-venv/
 .idea/
