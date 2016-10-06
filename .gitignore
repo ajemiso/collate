@@ -1,7 +1,8 @@
 .DS_Store
-*private/
+*_private/
+_private
 migrations
-__pycache*
+__pycache__
 *.pyc
 cap-venv/
-.idea
+.idea/
