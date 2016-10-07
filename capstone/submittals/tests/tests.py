@@ -49,3 +49,8 @@ class TestApp(TestCase):
         submittal = Submittal.objects.get(loan_number=10938475)
         self.assertEqual(person.user.first_name, "Andre")
         self.assertEqual(submittal.loan_number, 10938475)
+
+    def test_show_income(self):
+        """ test query to ensure income field in database saves as float """
+        submittal = Submittal.objects.get(loan_number=10938475)
+        self.assertEqual(submittal.b1_income_amount, 1723.72)

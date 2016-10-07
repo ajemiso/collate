@@ -5,13 +5,14 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.paginator import Paginator
 
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SubmittalSerializer
 
-from _private.secret import account_sid, auth_token
+# from _private.secret import account_sid, auth_token
 from .forms import SubmittalForm, PersonForm
 from addons.income_calc import IncomeCalc
 from addons.messages import SMS_MESSAGES, EMAIL_MESSAGES
@@ -21,6 +22,11 @@ from twilio import TwilioRestException
 from twilio.rest import TwilioRestClient
 
 import json
+
+
+# TWILIO SETTINGS
+account_sid = 'AC86189c370a1fcca6c3dd11c2fa15ee04'
+auth_token = '1769e4656916ec050cdbe4e58d17e6c1'
 
 
 def index(request):
