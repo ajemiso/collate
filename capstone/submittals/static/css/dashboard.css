@@ -46,8 +46,12 @@
     cursor: pointer;
 }
 
-.pagination li {
+.pagination > li > a {
+    color: #50507c;
+}
+.pagination > li > a:hover {
     background-color: #50507c !important;
+    color: #FFF;
 }
 
 .dashboard-pagination {
