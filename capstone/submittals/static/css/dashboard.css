@@ -45,3 +45,12 @@
     color: #f99f2b;
     cursor: pointer;
 }
+
+.pagination li {
+    background-color: #50507c !important;
+}
+
+.dashboard-pagination {
+    margin-left: 45%;
+
+}

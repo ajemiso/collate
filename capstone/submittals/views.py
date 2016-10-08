@@ -5,7 +5,7 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import AuthenticationForm
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -68,11 +68,26 @@ def dashboard(request, username):
     if request.method == 'GET':
         person = Person.objects.get(user=request.user)
         submittals = person.submittals.all().order_by('-created_at')
+
+        paginator = Paginator(submittals, 5)
+
+        page = request.GET.get('page')
+        try:
+            submits = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            submits = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            submits = paginator.page(paginator.num_pages)
+
+
         loan_list = list(submittals.values_list('loan_number', flat=True))
         loan_strings = list(map(str, loan_list))
         loan_numbers = json.dumps(loan_strings)
 
-    return render(request, 'dashboard.html', {'submittals': submittals, 'autolist': loan_numbers })
+
+    return render(request, 'dashboard.html', {'submittals': submits, 'autolist': loan_numbers })
 
 
 @login_required
@@ -144,6 +159,7 @@ def load_submit(request, username, pk=None):
 
 @api_view(['DELETE'])
 @login_required
+
 def delete_submit(request):
     submittal = Submittal.objects.get(loan_number=request.DELETE['loan_number'])
     submittal.delete()

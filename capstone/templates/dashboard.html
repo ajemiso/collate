@@ -55,6 +55,16 @@
 
 
             </table>
+                    <div class="pagination dashboard-pagination">
+                    <ul class="pagination">
+                       {%  for page in submittals.paginator.page_range %}
+
+                           <li>
+                            <a href="?page={{ page }}">{{ page }}</a>
+                           </li>
+                        {% endfor %}
+                    </ul>
+                        </div>
         </section>
     <div class="nav-bottom"></div>
             </div>

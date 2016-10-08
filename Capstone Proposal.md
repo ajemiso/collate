@@ -6,7 +6,7 @@
 
 ### Product Overview
 
-**_Collate_** is designed to minimize loan processing tasks in order to decrease redundancy & increase productivity.  Simple tasks such as calculating income & modifying email templates made easy.
+**_Collate_** is designed to work in conjunction with LendingQB, minimizing loan processing tasks in order to decrease redundancy & increase productivity.  Simple tasks such as calculating income & modifying email templates made easy.
 
 ### Specific Functionality
 
@@ -28,11 +28,7 @@ Section Two will also allow input of tax, insurance, and homeowner's association
 
 [Splash Screen Wireframe](https://wireframe.cc/LHxTck)
 
-![MacDown Screenshot](static/img/homescreen.png)
-
 [Dashboard Wireframe - _click link for annotations_](https://wireframe.cc/LHxTck)
-
-![MacDown Screenshot](static/img/dashboard.png)
 
 ### Data Model
 
