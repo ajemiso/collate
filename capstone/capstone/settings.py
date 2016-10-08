@@ -157,7 +157,7 @@ USE_TZ = True
 
 STATIC_URL = '/templates/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
-"""STATICFILES_DIRS = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates/static'),
-    ]"""
+    ]
 
