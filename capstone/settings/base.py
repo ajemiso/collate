@@ -164,8 +164,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 #     ]
 
 # Secure Settings
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SESSION_COOKIE_SECURE = True
+SECURE_CONTENT_TYPE_NOSNIFF = False
+SECURE_BROWSER_XSS_FILTER = False
+SESSION_COOKIE_SECURE = False # change to true when SSL activated
 CSRF_COOKIE_SECURE = False # change to true when SSL activated
 X_FRAME_OPTIONS = 'DENY'
