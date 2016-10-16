@@ -16,6 +16,7 @@ from .serializers import SubmittalSerializer
 from .forms import SubmittalForm, PersonForm
 from addons.income_calc import IncomeCalc
 from addons.messages import SMS_MESSAGES, EMAIL_MESSAGES
+from addons.zillow_parser import ZillowParser
 from .models import Person, Submittal
 
 from twilio import TwilioRestException
@@ -256,4 +257,19 @@ def calculate_income(request):
         return JsonResponse({'b2_income_output': result})
     else:
         return JsonResponse({'output': 'error'})
+
+
+@login_required()
+def get_zestimate(request):
+    if request.method == 'POST':
+       address = {'address': request.POST.get('address')[0],
+                  'city': request.POST.get('city')[0],
+                  'state': request.POST.get('state')[0],
+                  'zip': request.POST.get('zip')[0]
+                  }
+       zillow = ZillowParser(**address)
+       zillow.get_zestimate()
+       zestimate = zillow.zestimate
+
+       return JsonResponse({'zestimate': zestimate})
 

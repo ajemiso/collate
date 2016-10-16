@@ -29,20 +29,21 @@
 
     <div class="row first-row">
 
-        <article class="col-md-8 header-field">
-                    <form class="loan-number-field" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
-                      <div class="form-inline">
-                        <label for="loan_number">Loan Number*</label>
-                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
-                         <div> {{ form.loan_number }}</div>
-                            {% load static %}
-                          <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"</aside>
-                      </div>
-                    </form>
+        <div class="row">
+            <article class="col-md-8 header-field">
+                        <form class="loan-number-field" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
+                          <div class="form-inline">
+                            <label for="loan_ddnumber">Loan Number*</label>
+                            <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+                             <div> {{ form.loan_number }}</div>
+                                {% load static %}
+                              <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"</aside>
+                          </div>
+                        </form>
 
 
-                </article>
-
+                    </article>
+        </div>
 
 
       <div class="col-md-12 main-area">
