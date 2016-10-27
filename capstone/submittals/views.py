@@ -114,6 +114,7 @@ def save_submit(request):
         if form.is_valid():
             submittal = form.save(commit=False)
             submittal.loan_processor = request.user.person
+            submittal.appraisal_value = request.POST.get('appraisal-value')
             submittal.save()
             pk = submittal.id
             return JsonResponse({'pk': pk})
@@ -183,7 +184,6 @@ def sms_message(request):
 
         if request.POST['loan_number'] != '':
             recipient_data = request.POST.getlist('recipients[]')
-            #import pdb; pdb.set_trace()
             recipients = list(map(str.strip, recipient_data))
             recipients = ['+1{}'.format(number) for number in recipients if number != '']
 
@@ -262,10 +262,10 @@ def calculate_income(request):
 @login_required()
 def get_zestimate(request):
     if request.method == 'POST':
-       address = {'address': request.POST.get('address')[0],
-                  'city': request.POST.get('city')[0],
-                  'state': request.POST.get('state')[0],
-                  'zip': request.POST.get('zip')[0]
+       address = {'address': request.POST.get('address'),
+                  'city': request.POST.get('city'),
+                  'state': request.POST.get('state'),
+                  'zip': request.POST.get('zip')
                   }
        zillow = ZillowParser(**address)
        zillow.get_zestimate()

@@ -6,6 +6,7 @@
 
 // set values on page load
 $("#loader").hide();
+$('#zestimate').hide();
 
 $(document).ajaxStart(function() {
     $("#loader").show(500);
@@ -120,3 +121,49 @@ $('#calc-btn-b2').click(function(event) {
     })
 
     });
+
+
+/* *** APPRAISAL VALUE SCRIPTS *** */
+
+
+// setup ajax request function
+function requestAppraisalValue() {
+    var $data = {
+        'address': $('#address').val(),
+        'city': $('#city').val(),
+        'state': $('#state').val(),
+        'zip': $('#zip').val(),
+    }
+
+    if ($('.zestimate').is(':empty')) {
+
+        $.ajax({
+            url: '/get-zestimate/',
+            type: 'POST',
+            data: $data,
+            success: function(rsp) {
+                console.log(rsp);
+                $('.zestimate').html(rsp.zestimate);
+                $('#appraisal-value').val(rsp.zestimate);
+                $('.zestimate').slideDown(600);
+                saveSubmit();
+            },
+            error: function(rsp) {
+                console.log(rsp);
+            }
+
+        })
+
+    }
+}
+
+//Event listener for any address related field (calls function above)
+$('#zip').change(function (evt) {
+    requestAppraisalValue();
+});
+
+
+
+
+
+

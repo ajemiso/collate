@@ -29,24 +29,117 @@
 
     <div class="row first-row">
 
-        <div class="row">
-            <article class="col-md-8 header-field">
-                        <form class="loan-number-field" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
-                          <div class="form-inline">
-                            <label for="loan_ddnumber">Loan Number*</label>
-                            <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
-                             <div> {{ form.loan_number }}</div>
-                                {% load static %}
-                              <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"</aside>
-                          </div>
-                        </form>
 
 
-                    </article>
-        </div>
+
+
+
+
+
 
 
       <div class="col-md-12 main-area">
+
+          <div class="col-xs-12">
+            <article class="col-xs-2 header-field">
+                        <form class="loan-number-field low-hang" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
+                          <div class="form-inline">
+                            <label for="loan_number">Loan Number*</label>
+                            <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+                             <div> {{ form.loan_number }}</div>
+                                {% load static %}
+                              <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"></aside>
+                          </div>
+                        </form>
+                    </article>
+
+            <article class="col-xs-3 low-hang">
+                <label for="address">Street Address</label>
+                    <div> {{ form.subject_property_address }}</div>
+
+            </article>
+
+            <article class="col-xs-3 low-hang">
+                <label for="city">City</label>
+                    <div> {{ form.subject_property_city }}</div>
+
+            </article>
+
+            <article class="col-xs-2 low-hang">
+                <label for="state">State</label>
+                    <div> {{ form.subject_property_state }}</div>
+
+            </article>
+
+            <article class="col-xs-2 low-hang">
+                <label for="zip-code">Zip</label>
+                    <div> {{ form.subject_property_zip }}</div>
+
+            </article>
+        </div>
+
+        <!-- Zillow Zestimate information -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-2 low-hang appraisal">
+            <label for="appraisal-value">Zillow&trade; Zestimate:</label>
+                 {% if form.appraisal_value.value == None %}
+                     <div class="zestimate"></div>
+                 {% elif form.appraisal_value.value == "" %}
+                     <div class="zestimate"></div>
+                 {% else %}
+                    <div class="zestimate">{{ form.appraisal_value.value }}</div>
+                 {% endif %}
+                    </div>
+
+            <div class="col-xs-4 show-map">
+                <input type="checkbox" name="show-map" id="show-map"> <i>Display Map</i>
+            </div>
+
+                </div>
+
+        </div>
+
+    <!-- Zillow Zestimate hidden input information -->
+                <input type="hidden" name="appraisal-value" id="appraisal-value" value="{{ form.appraisal_value.value }}">
+            <!-- end Zestimate -->
+
+
+
+
+        <!-- Google Maps area -->
+        <div class="row">
+            <div class="col-md-12 main-area">
+                    <div id="map" class="col-xs-12"></div>
+
+            </div>
+            <script>
+                var map;
+
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                    });
+
+                }
+
+                // changes MAP checkbox "checked" value
+
+                $('#show-map').change(function(event) {
+
+                    $('#map').toggle();
+                    google.maps.event.trigger(map, 'resize');
+
+                });
+
+            </script>
+
+            <!-- end Google Maps area -->
+
+        </div>
+
+
         <section class="section col-md-12">
             <div class="row">
                 <aside class="list-inline col-xs-9">
@@ -403,6 +496,7 @@
                     <!-- start jQuery SMS Message script -->
 
                     <script>
+
                         var $data = {{ sms_messages|safe }};
                         var $selected = $('#sms_template_select');
                         var $sms = $('#sms_message');
@@ -466,6 +560,7 @@
 
                         });
 
+
                     </script>
 
                 </article>
@@ -486,5 +581,6 @@
     </main>
     </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI3DibCyxboZn2j9n_XU1hIudKRiguBzA&callback=initMap" async defer></script>
 
 {% endblock %}

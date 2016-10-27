@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from addons.choices import STATES
+
 
 class Person(models.Model):
     user = models.OneToOneField(User)
@@ -45,6 +47,12 @@ class Submittal(models.Model):
     loan_processor = models.ForeignKey(Person, related_name="submittals", null=True, blank=True)
     loan_story = models.CharField(max_length=2560, blank=True)
 
+    subject_property_address = models.CharField(max_length=256, blank=True)
+    subject_property_city = models.CharField(max_length=256, blank=True)
+    subject_property_state = models.CharField(max_length=256, blank=True, choices=STATES)
+    subject_property_zip = models.CharField(max_length=256, blank=True)
+    appraisal_value = models.CharField(max_length=256, blank=True)
+
     b1_first_name = models.CharField(max_length=256, blank=True)
     b1_last_name = models.CharField(max_length=256, blank=True)
 
@@ -69,7 +77,6 @@ class Submittal(models.Model):
 
     b1_income_amount = models.FloatField(null=True, blank=True)
     b2_income_amount = models.FloatField(null=True, blank=True)
-
 
     b1_pay_frequency = models.CharField(max_length=256, blank=True, choices=PAY_TYPES)
     b2_pay_frequency = models.CharField(max_length=256, blank=True, choices=PAY_TYPES)

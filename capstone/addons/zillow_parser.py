@@ -1,12 +1,9 @@
 from bs4 import BeautifulSoup
 from _private.private import ZILLOW_ID
 
+import locale
 import re
 import requests
-
-
-# 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19j83ywrzm3_77v70&address=4542+NE+12th+Ave&citystatezip=Portland%2C+OR'
-
 
 class ZillowParser(object):
 
@@ -22,13 +19,14 @@ class ZillowParser(object):
         self.zestimate_url = 'http://www.zillow.com/webservice/GetZestimate.htm?zws-id={0.zillow_id}'.format(self)
         self.zpid = None
         self.zestimate = None
-
+        self.lat = None
+        self.long = None
 
     def __str__(self):
         return "{0.address}, {0.city}, {0.state}".format(self)
 
     def __repr__(self):
-        return "{0.__class__.__name__}({0.address}, {0.city}, {0.state}}".format(self)
+        return "{0.__class__.__name__}({0.address}, {0.city}, {0.state})".format(self)
 
     def clean_address(self):
         """ converts address strings into acceptable URL format for POST request """
@@ -65,7 +63,9 @@ class ZillowParser(object):
         amount = str(soup.amount) # convert tag object to string
         pattern = r'\d+' # re pattern (inside tag)
         search = re.search(pattern, amount) # grab appraisal amount from inside tag string
-        result = search.group() # save result
+        result = int(search.group()) # save result, converting to int for currency conversion
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8') # set up currency conversion from int
+        result = locale.currency(result, grouping=True)
         self.zestimate = result
         return None
 

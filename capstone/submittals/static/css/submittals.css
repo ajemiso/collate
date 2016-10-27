@@ -103,13 +103,10 @@ h5 {
 
 .borr-info-form {
     margin: 10px;
-    
 }
 
 .loan-number-field {
     background-color: #FFF;
-    margin-top: 15px;
-
 }
 
 .header-field {
@@ -151,3 +148,27 @@ h5 {
     margin-top: 7px;
     margin-bottom: 10px;
 }
+
+.low-hang {
+    margin-top: 15px;
+}
+
+.appraisal {
+    margin-left: 15px;
+}
+
+#map {
+    height: 50%;
+    width: 100%;
+}
+
+.map-box {
+    margin: 0;
+    width: 100%;
+}
+
+.show-map {
+    top: 45px;
+
+}
+

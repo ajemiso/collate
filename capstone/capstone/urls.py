@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^load_loan_number/$', views.load_submit),
     url(r'^delete/$', views.delete_submit, name='delete_submit'),
     url(r'^sms/$', views.sms_message, name='sms_message'),
+    url(r'^get-zestimate/$', views.get_zestimate, name="get_zestimate"),
 
     #REST API
     url(r'api/', include(router.urls)),

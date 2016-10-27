@@ -6,15 +6,17 @@
 
 ### Product Overview
 
-**_Collate_** is designed to work in conjunction with LendingQB, minimizing loan processing tasks in order to decrease redundancy & increase productivity.  Simple tasks such as calculating income & modifying email templates made easy.
+**_Collate_** was initially designed to work in conjunction with an existing loan processing web application, minimizing loan processing tasks in order to decrease redundancy & increase productivity.  Simple tasks such as calculating income & modifying email templates made easy.
 
 ### Specific Functionality
 
 #### _Minimum Feature Set_
 
-The main component of the application is the dashboard.  The goal is to create a single-page app that utilizes AJAX & minimizes the need for navigation & page loading. 
+The main component of the application is the **loan application page**.  The goal is to create a single page form that utilizes AJAX & minimizes the need for navigation & page loading. 
 
-After the user logs in, they will be presented with an all-in-one dashboard. The **Navigation** area at the top of the screen will allow the user to go back to the main page of this dashboard via the **Home** link, allow any input data to be saved to the database via the **Save** link, and allow for the creation of a new file via the **New File** link.
+After the user logs in, they will be presented with a **Dashboard**, which lists each user's applications in progress/completed. 
+
+The **Navigation** area at the top of the screen will allow the user to go back to the main page of this dashboard via the **Home** link, allow any input data to be saved to the database via the **Save** link, and allow for the creation of a new file via the **New File** link.
 
 **Section One** of the the dashboard contains fields for borrower name(s), loan account number, loan officer name, and type of loan.
 
@@ -46,17 +48,41 @@ The relational database will be structured as follows:
 
 **File Table**
 
-* Loan (Account) Number 
-* User ID
+* Loan Number 
+* Account Type
+* Loan Processor (Foreign Key)
+* Loan Officer
+* Loan Story
+* Subject Property Address
+* Subject Property City
+* Subject Property State
+* Subject Property Zip Code
+* Property Appraisal Value
 * Member One First Name
 * Member One Last Name
 * Member Two First Name
 * Member Two Last Name
-* Employer Name
-* Hire Date
-* Paystub Amount
-* Pay Cycle (bi-weekly, semi-monthly, etc.)
-* Period Ending Date
+* Member One Employer Name
+* Member Two Employer Name
+* Member One Phone Number
+* Member Two Phone Number
+* SMS Templates
+* SMS Message
+* Member One Email Address
+* Member Two Email Address
+* Email Templates
+* Email Message
+* Member One Hire Date
+* Member Two Hire Date
+* Member One Income Amount
+* Member Two Income Amount
+* Member One Pay Frequency
+* Member Two Pay Frequency
+* Member One Period Ending Date
+* Member Two Period Ending Date
+* Member One Income Output
+* Member Two Income Output
+* Date Created/Last Updated
 
 ### Technical Components
 

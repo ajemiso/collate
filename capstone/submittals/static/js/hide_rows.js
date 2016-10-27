@@ -5,6 +5,7 @@
 // dashboard page
 'use strict';
 
+$('#map').hide();
 
 $('.drop-down').hide().slideToggle();
 
@@ -58,6 +59,8 @@ $('#show-b2').change(function(event) {
 
 
 });
+
+
 
 
 /* $('#show-b2').click(function(evt) {
