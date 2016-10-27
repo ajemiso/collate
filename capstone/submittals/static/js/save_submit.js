@@ -145,6 +145,7 @@ function requestAppraisalValue() {
                 console.log(rsp);
                 $('.zestimate').html(rsp.zestimate);
                 $('#appraisal-value').val(rsp.zestimate);
+
                 $('.zestimate').slideDown(600);
                 saveSubmit();
             },

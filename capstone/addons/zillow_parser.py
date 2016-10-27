@@ -43,6 +43,11 @@ class ZillowParser(object):
         zillow_url = self.address_url + '&address={0.address}&citystatezip={0.city_state_zip}'.format(self)
         xml_response = requests.post(zillow_url) # get Zillow address info
         soup = BeautifulSoup(xml_response.text, 'lxml') # parse XML response
+
+        #add latitude and longitude values
+        self.lat = soup.latitude.string
+        self.long = soup.longitude.string
+
         zpid = str(soup.zpid) # convert tag object to string
         pattern = r'\d+' # re pattern (inside tag)
         search = re.search(pattern, zpid) # grab zpid from inside tag string
