@@ -45,8 +45,8 @@ class ZillowParser(object):
         soup = BeautifulSoup(xml_response.text, 'lxml') # parse XML response
 
         #add latitude and longitude values
-        self.lat = soup.latitude.string
-        self.long = soup.longitude.string
+        self.lat = float(soup.latitude.string)
+        self.long = float(soup.longitude.string)
 
         zpid = str(soup.zpid) # convert tag object to string
         pattern = r'\d+' # re pattern (inside tag)

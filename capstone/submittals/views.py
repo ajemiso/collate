@@ -273,5 +273,5 @@ def get_zestimate(request):
        latitude = zillow.lat
        longitude = zillow.long
 
-       return JsonResponse({'zestimate': zestimate, 'latitude': latitude, 'longitude': longitude})
+       return JsonResponse({'zestimate': zestimate, 'latt': latitude, 'long': longitude})
 

@@ -101,6 +101,11 @@ h5 {
     padding-bottom: 25px;
 }
 
+.divider {
+    background-color: #fff;
+    height: 15px;
+}
+
 .borr-info-form {
     margin: 10px;
 }
@@ -141,7 +146,8 @@ h5 {
 }
 
 .sms-btn {
-    background-color: #50507c;
+    background-color: #efeff5;
+    color: #0a0a10;
 }
 
 #search-box {
@@ -160,11 +166,17 @@ h5 {
 #map {
     height: 50%;
     width: 100%;
+
+}
+
+#map > div {
+    border-radius: 10px;
 }
 
 .map-box {
     margin: 0;
     width: 100%;
+    border-bottom-right-radius: 10px;
 }
 
 .show-map {
@@ -172,3 +184,18 @@ h5 {
 
 }
 
+.zestimate {
+    color: #2b542c;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.contact-section {
+    background-color: #50507c;
+    color: #FFF;
+}
+
+. {
+	border: 2px solid #AA88FF;
+	background-color: #FFEEAA;
+}

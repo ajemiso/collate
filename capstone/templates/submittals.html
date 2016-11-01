@@ -116,20 +116,29 @@
             <script>
                 var map;
                 var marker;
+                var infowindow;
+                var lat = parseFloat(localStorage.latt);
+                var lng = parseFloat(localStorage.long);
 
                 function initMap() {
 
-                    var myLatLng = {lat: -34.397, lng: 150.644};
+                    var myLatLng = {lat: lat, lng: lng};
 
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: myLatLng,
-                        zoom: 19
+                        mapTypeId: 'satellite',
+                        scrollwheel: false,
+                        zoom: 20
                     });
 
                     marker = new google.maps.Marker({
                         position: myLatLng,
                         map: map,
-                        title: 'Hello World!'
+                        title: 'Your Property'
+                    });
+
+                    infowindow = new google.maps.InfoWindow({
+                        content: '<div class="zestimate">' + $('#appraisal-value').val() + '</div>'
                     });
 
                 }
@@ -141,6 +150,7 @@
                     $('#map').toggle();
                     google.maps.event.trigger(map, 'resize');
                     map.setCenter(marker.getPosition());
+                    infowindow.open(map, marker);
 
                 });
 
@@ -227,7 +237,16 @@
              </div>
 
 
+
+
+
             <div class="row b2">
+
+
+                <!-- 1st B2 divider row -->
+            <div class="divider"></div>
+            <!-- end 1st B2 divider row -->
+
                 <h4>B2 Primary Information</h4>
 
                 <article class="col-md-4">
@@ -349,8 +368,17 @@
                 </article>
 
             </div>
-                
+
+
+
+
+
             <div class="row b2">
+
+                <!-- 2nd B2 divider row -->
+            <div class="divider"></div>
+            <!-- end 2nd B2 divider row -->
+
                 <h4>B2 Income Information</h4>
                 <article class="col-md-4">
                     <form class="borr-info-form">
@@ -441,9 +469,9 @@
 
     <div class="row third-row">
       <div class="col-md-12 main-area">
-        <section class="section">
+        <section class="section contact-section">
             <div class="row email-row">
-                <h4>Contact Member</h4>
+                <h4>Contact Member  <div class="glyphicon glyphicon-phone"></div></h4>
 
 
 

@@ -17,6 +17,7 @@ $(document).ajaxComplete(function(){
 
     });
 
+
 // Save submittal function
 
 function saveSubmit() {
@@ -145,6 +146,8 @@ function requestAppraisalValue() {
                 console.log(rsp);
                 $('.zestimate').html(rsp.zestimate);
                 $('#appraisal-value').val(rsp.zestimate);
+                localStorage.setItem('latt', rsp.latt);
+                localStorage.setItem('long', rsp.long);
 
                 $('.zestimate').slideDown(600);
                 saveSubmit();
@@ -163,8 +166,21 @@ $('#zip').change(function (evt) {
     requestAppraisalValue();
 });
 
+// Event listener for dollar signs in income textarea inputs
 
 
 
+function addDollarValue(field) {
+    var dollarValue = field.value;
+    if (dollarValue[0] !== '$' && dollarValue !== '') {
+        $(field).val('$' + dollarValue);
+        }
+}
 
+$('#b1_income_amount').keyup(function(evt) {
+    addDollarValue(this);
+    });
 
+$('#b2_income_amount').keyup(function(evt) {
+    addDollarValue(this);
+});
