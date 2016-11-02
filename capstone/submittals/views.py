@@ -17,6 +17,7 @@ from .forms import SubmittalForm, PersonForm
 from addons.income_calc import IncomeCalc
 from addons.messages import SMS_MESSAGES, EMAIL_MESSAGES
 from addons.zillow_parser import ZillowParser
+from _private.private import GOOGLE_MAPS_API_KEY
 from .models import Person, Submittal
 
 from twilio import TwilioRestException
@@ -156,7 +157,8 @@ def load_submit(request, username, pk=None):
         sms_messages = json.dumps(fulfilled_sms_messages)
         email_messages = json.dumps(EMAIL_MESSAGES)
         return render(request, 'submittals.html', {'form': form, 'sms_messages': sms_messages,
-                                                   'email_messages': email_messages })
+                                                   'email_messages': email_messages,
+                                                   'GOOGLE_MAPS_API_KEY': GOOGLE_MAPS_API_KEY })
 
 
 @api_view(['DELETE'])

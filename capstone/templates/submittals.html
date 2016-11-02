@@ -2,7 +2,7 @@
 
 {% block body %}
 
-
+<!-- start of submittal page -->
 <div class="container">
     
 <main class="fade-in-body">
@@ -37,7 +37,7 @@
 
 
 
-
+<!-- main body area -->
       <div class="col-md-12 main-area">
 
           <div class="col-xs-12">
@@ -45,7 +45,7 @@
                         <form class="loan-number-field low-hang" id="loan_number_form" action="/save/" method="POST">{% csrf_token %}
                           <div class="form-inline">
                             <label for="loan_number">Loan Number*</label>
-                            <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+
                              <div> {{ form.loan_number }}</div>
                                 {% load static %}
                               <aside id="loader"><img src="{% static 'img/ajax-loader.gif' %}"></aside>
@@ -102,7 +102,7 @@
 
     <!-- Zillow Zestimate hidden input information -->
                 <input type="hidden" name="appraisal-value" id="appraisal-value" value="{{ form.appraisal_value.value }}">
-            <!-- end Zestimate -->
+            <!-- end Zestimate hidden input info -->
 
 
 
@@ -160,7 +160,7 @@
 
         </div>
 
-
+        <!-- B1 primary info -->
         <section class="section col-md-12">
             <div class="row">
                 <aside class="list-inline col-xs-9">
@@ -178,18 +178,18 @@
                     <form class="borr-info-form">{% csrf_token %}
                       <div class="form-group">
                         <label for="b1_first_name">First Name*</label>
-                        <!-- input type="text" class="form-control" id="b1_first_name" placeholder="First Name" -->
+
                         {{ form.b1_first_name }}
                       </div>
                       <div class="form-group">
                         <label for="b1_last_name">Last Name*</label>
                           {{ form.b1_last_name }}
-                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
+
                       </div>
                       <div class="form-group">
                         <label for="b1_phone_number">Mobile Number</label>
                           {{ form.b1_phone_number }}
-                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
+
                       </div>
                       <div class="form-group">
                         <p class="help-block">* = required field</p>
@@ -201,21 +201,18 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="loan_officer">Loan Officer*</label>
-                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+
                           {{ form.loan_officer }}
                       </div>
                       <div class="form-group">
                         <label for="account_type">Account Type*</label>
                           {{ form.account_type }}
-                        <!-- select class="form-control" id="account_type" -->
-                          <!-- option selected="selected">Equity Line of Credit</option -->
-                          <!-- option>Equity Loan</option -->
-                        <!-- /select -->
+
                       </div>
                         <div class="form-group">
                         <label for="b1_email_address">Email</label>
                           {{ form.b1_email_address }}
-                        <!-- input type="text" class="form-control" id="b1_last_name" placeholder="Last Name" -->
+
                       </div>
                     </form>
                 
@@ -226,7 +223,7 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="loan_officer">Loan Story*</label>
-                        <!-- input type="text" class="form-control" id="loan_officer" placeholder="First Name Only" -->
+
                           {{ form.loan_story }}
                       </div>
                     </form>
@@ -247,18 +244,20 @@
             <div class="divider"></div>
             <!-- end 1st B2 divider row -->
 
+
+            <!-- B2 Primary Info -->
                 <h4>B2 Primary Information</h4>
 
                 <article class="col-md-4">
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_first_name">First Name</label>
-                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+
                         {{ form.b2_first_name }}
                       </div>
                       <div class="form-group">
                         <label for="b2_last_name">Last Name</label>
-                        <!-- input type="text" class="form-control" id="b2_last_name" placeholder="Last Name" -->
+
                         {{ form.b2_last_name }}
                       </div>
                       <div class="form-group">
@@ -270,12 +269,12 @@
                     <form class="borr-info-form">
                         <div class="form-group">
                         <label for="b2_phone_number">Mobile Number</label>
-                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+
                         {{ form.b2_phone_number }}
                       </div>
                       <div class="form-group">
                         <label for="b2_email_address">Email</label>
-                        <!-- input type="text" class="form-control" id="b2_first_name" placeholder="First Name" -->
+
                         {{ form.b2_email_address }}
                       </div>
 
@@ -283,21 +282,16 @@
                     </article>
 
             
-            </div>
+                </div>
           
           </section>
-        
-        
+
         </div>
-      <!-- div class="col-md-3 side-bar">
-        <section class="section hidden-lg-down">
-            <div class="row"><h4>Quick Nav</h4></div>
-            
-          
-          </section>
-        
-        </div-->
-        </div>
+
+    </div>
+
+
+ <!-- B1 Income Information -->
     <div class="row second-row">
       <div class="col-md-12 main-area">
         <section class="section">
@@ -307,17 +301,17 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_employer_name">Employer Name*</label>
-                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
+
                         {{ form.b1_employer_name }}
                       </div>
                       <div class="form-group">
                         <label for="b1_hire_date">Hire Date*</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+
                         {{ form.b1_hire_date }}
                       </div>
                         <div class="form-group">
                         <label for="b1_period_end_date">Period End Date*</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+
                         {{ form.b1_period_end_date }}
                       </div>
                       <div class="form-group">
@@ -331,19 +325,14 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_income_amount">Income Amount*</label>
-                        <!-- input type="text" class="form-control" id="b1_income_amount" placeholder="$" -->
+
                         {{ form.b1_income_amount }}
                       </div>
                       <div class="form-group">
                         <label for="b1_pay_frequency">Pay Frequency*</label>
                           {{ form.b1_pay_frequency }}
-                        <!-- select class="form-control" id="b1_pay_frequency">
-                          <option selected="selected"></option>
-                          <option>Bi-Weekly</option>
-                          <option>Semi-Monthly</option>
-                          <option>Monthly</option>
-                          <option>Weekly</option>
-                        </select -->
+
+
                       </div>
 
                     </form>
@@ -358,8 +347,7 @@
                       <div class="form-group">
                         <label for="b1_income_output">Output</label>
                           {{ form.b1_income_output }}
-                        <!-- textarea class="form-control" id="b1_income_output" rows="5"
-                                  placeholder="All B1 income fields must be completed" readonly></textarea -->
+
                       </div>
 
                     </form>
@@ -385,17 +373,17 @@
                       <div class="form-group">
                         <label for="b2_employer_name">Employer Name*</label>
                           {{ form.b2_employer_name }}
-                        <!-- input type="text" class="form-control" id="b2_employer_name" placeholder="Employer Name" -->
+
                       </div>
                       <div class="form-group">
                         <label for="b2_hire_date">Hire Date*</label>
                           {{ form.b2_hire_date }}
-                        <!-- input type="text" class="form-control" id="b2_hire_date" placeholder="mm/dd/yy" -->
+
                       </div>
                         <div class="form-group">
                         <label for="b2_period_end_date">Period End Date*</label>
                           {{ form.b2_period_end_date }}
-                        <!-- input type="text" class="form-control" id="b2_hire_date" placeholder="mm/dd/yy" -->
+
                       </div>
                       <div class="form-group">
                         <p class="help-block">* = required field</p>
@@ -406,19 +394,13 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b2_income_amount">Income Amount*</label>
-                        <!-- input type="text" class="form-control" id="b2_income_amount" placeholder="$" -->
+
                         {{ form.b2_income_amount }}
                       </div>
                       <div class="form-group">
                         <label for="b2_pay_frequency">Pay Frequency*</label>
                           {{ form.b2_pay_frequency }}
-                        <!-- select class="form-control" id="b2_pay_frequency">
-                          <option selected="selected"></option>
-                          <option>Bi-Weekly</option>
-                          <option>Semi-Monthly</option>
-                          <option>Monthly</option>
-                          <option>Weekly</option>
-                        </select -->
+
                       </div>
 
                         <div class="form-group">
@@ -434,8 +416,7 @@
                       <div class="form-group">
                         <label for="b2_income_output">Output</label>
                           {{ form.b2_income_output }}
-                        <!-- textarea class="form-control" id="b2_income_output" rows="5"
-                                  placeholder="All B2 income fields must be completed" readonly></textarea -->
+
                       </div>
 
                     </form>
@@ -479,14 +460,14 @@
                     <form class="borr-info-form">
                       <div class="form-group">
                         <label for="b1_phone_number">B1 Phone Number:</label>
-                        <!-- input type="text" class="form-control" id="b1_employer_name" placeholder="Employer Name" -->
+
                           <div id="b1_phone_number_value">
                             {{ form.b1_phone_number.value }}
                               </div>
                       </div>
                       <div class="form-group">
                         <label for="b2_phone_number">B2 Phone Number:</label>
-                        <!-- input type="text" class="form-control" id="b1_hire_date" placeholder="mm/dd/yy" -->
+
                           <div id="b2_phone_number_value">
                             {{ form.b2_phone_number.value }}
                               </div>
@@ -620,6 +601,7 @@
     </main>
     </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI3DibCyxboZn2j9n_XU1hIudKRiguBzA&callback=initMap" async defer></script>
+<!-- Google Map script tag -->
+<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
 
 {% endblock %}
