@@ -18,18 +18,27 @@ After the user logs in, they will be presented with a **Dashboard**, which lists
 
 The **Navigation** area at the top of the screen will allow the user to go back to the main page of this dashboard via the **Home** link, allow any input data to be saved to the database via the **Save** link, and allow for the creation of a new file via the **New File** link.
 
-**Section One** of the the dashboard contains fields for borrower name(s), loan account number, loan officer name, and type of loan.
+##Sections
 
-**Section Two** of the dashboard will take borrower(s) income infomation (employer name, job start date, monthly income amount, paystub period end date, and pay schedule type), and will output a concatenated string for the user to input back into their main loan application.  
+**Section One** of the the dashboard contains fields for address information, automated Zillow Zestimate retrieval, and an optional map that displays the property location via Google Maps.
 
-_example: B1: Employed with the Portland Trailblazers for 4 years, semi-monthly pay, $40,000.00/mo, good through 11/01/2016_
+![Screen One](/docs/collate_pics/Collate_Screen_One.png)
 
-Section Two will also allow input of tax, insurance, and homeowner's association dues information (see Further Work section.)
+**Section Two** of the the dashboard contains fields for borrower name(s), loan account number, loan officer name, phone number, type of loan, and loan story.
 
-**Section Three** will be a quick navigation area, which may not contain links until the MVP is completed.
+![Screen Two](/docs/collate_pics/Collate_Screen_2.png)
 
+**Section Three** of the dashboard will take borrower(s) income infomation (employer name, job start date, monthly income amount, paystub period end date, and pay schedule type), and will output a concatenated string for the user to input back into their main loan application.  
 
-### Data Model
+![Screen Three](/docs/collate_pics/Collate_Screen_Three.png)
+
+Section Three will also allow input of tax, insurance, and homeowner's association dues information (see Further Work section.)
+
+**Section Four** will allow the User to send a SMS message to the borrower with optional message templates.
+
+![Screen Four](/docs/collate_pics/Collate_Screen_4.png)
+
+## Data Model
 
 The relational database are structured as follows:
 
@@ -96,7 +105,7 @@ Django framework will require modules that can preform the following tasks:
 * Implementing Email Templates
 * Adding Tax, Insurance, & homeowner's association elements
 * Adding automated underwriting features based on training data
-
+* SMS & Email Message Template creator with interface
 
 
 
